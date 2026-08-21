@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tiny Minds Adatkezelési Tájékoztató</title>
+    <meta name="description" content="Tiny Minds Adatkezelési Tájékoztató — Tiny Minds" />
+    <meta name="robots" content="index, follow" />
+    <style>
+:root{
+  --navy:#344580; --blue:#6189CE; --light:#97ADE4; --card:#E4EAFF;
+  --ink:#253156; --muted:#5b6b96; --bg:#f5f7ff; --surface:#ffffff; --rule:#dfe6fb;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --ink:#e8edff; --muted:#9db0e0; --bg:#161d33; --surface:#1e2743;
+    --card:#26314f; --rule:#33406a;
+  }
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px; line-height:1.65; -webkit-text-size-adjust:100%;
+}
+header.masthead{background:var(--navy); color:#fff; padding:28px 20px 24px}
+header.masthead .wrap{max-width:760px; margin:0 auto}
+header.masthead h1{margin:0 0 10px; font-size:26px; line-height:1.3; font-weight:700}
+.meta{display:flex; flex-wrap:wrap; gap:8px 18px; margin:0; padding:0; list-style:none;
+  font-size:14px; color:var(--light)}
+.meta strong{color:#fff; font-weight:600}
+.actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px}
+.actions a{
+  display:inline-block; padding:9px 16px; border-radius:999px; text-decoration:none;
+  font-size:14px; font-weight:600; background:rgba(255,255,255,.14); color:#fff;
+  border:1px solid rgba(255,255,255,.28); line-height:1.4;
+}
+.actions a:hover{background:rgba(255,255,255,.24)}
+main{max-width:760px; margin:0 auto; padding:0 20px 64px}
+nav.toc{
+  background:var(--surface); border:1px solid var(--rule); border-radius:14px;
+  padding:18px 22px; margin:28px 0 8px;
+}
+nav.toc h2{margin:0 0 10px; font-size:15px; text-transform:uppercase;
+  letter-spacing:.06em; color:var(--muted)}
+nav.toc ol{margin:0; padding-left:20px; font-size:15px}
+nav.toc li{margin:4px 0}
+nav.toc li.sub{list-style:none; margin-left:-4px; font-size:14px}
+nav.toc a{color:var(--ink); text-decoration:none}
+nav.toc a:hover{text-decoration:underline}
+section{padding-top:8px}
+h2.section{font-size:20px; line-height:1.35; margin:34px 0 12px; color:var(--ink);
+  scroll-margin-top:16px}
+h3.section{font-size:17px; line-height:1.4; margin:24px 0 10px; color:var(--ink);
+  scroll-margin-top:16px}
+h2.section .num,h3.section .num{color:var(--blue); margin-right:.4em}
+p{margin:0 0 14px}
+ul{margin:0 0 16px; padding-left:22px}
+li{margin:6px 0}
+a{color:var(--blue)}
+strong{font-weight:600}
+footer{
+  max-width:760px; margin:0 auto; padding:24px 20px 48px; border-top:1px solid var(--rule);
+  color:var(--muted); font-size:14px;
+}
+footer a{color:var(--blue)}
+@media (max-width:520px){
+  body{font-size:16px}
+  header.masthead h1{font-size:22px}
+  h2.section{font-size:18px}
+}
+</style>
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="wrap">
+        <h1>Tiny Minds Adatkezelési Tájékoztató</h1>
+        <ul class="meta">
+        <li><strong>Verzió:</strong> 1.0</li>
+        <li><strong>Hatálybalépés:</strong> 2026. 06. 30.</li>
+        <li><strong>Utolsó módosítás:</strong> 2026. 06. 30.</li>
+        </ul>
+        <div class="actions">
+          <a href="adatkezelesi-tajekoztato.pdf">PDF letöltése</a>
+          <a href="../en/privacy-policy.html">English</a>
+      <a href="aszf.html">ÁSZF</a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <nav class="toc">
+        <h2>Tartalom</h2>
+        <ol>
+      <li class=""><a href="#s-1">Bevezetés</a></li>
+      <li class=""><a href="#s-2">Az Adatkezelő adatai</a></li>
+      <li class=""><a href="#s-3">Az adatkezelés alapelvei</a></li>
+      <li class=""><a href="#s-4">Az alkalmazás célja</a></li>
+      <li class=""><a href="#s-5">A kezelt személyes adatok köre</a></li>
+      <li class=""><a href="#s-6">Az adatkezelés célja</a></li>
+      <li class=""><a href="#s-7">Az adatkezelés jogalapjai</a></li>
+      <li class=""><a href="#s-8">Adatfeldolgozók és igénybe vett szolgáltatók</a></li>
+      <li class="sub"><a href="#s-8-1">8.1 Saját szerver</a></li>
+      <li class="sub"><a href="#s-8-2">8.2 RevenueCat</a></li>
+      <li class="sub"><a href="#s-8-3">8.3 Google AdMob</a></li>
+      <li class="sub"><a href="#s-8-4">8.4 Google Play Games</a></li>
+      <li class="sub"><a href="#s-8-5">8.5 Apple Game Center</a></li>
+      <li class=""><a href="#s-9">Nemzetközi adattovábbítás</a></li>
+      <li class=""><a href="#s-10">Az adatok megőrzésének időtartama</a></li>
+      <li class=""><a href="#s-11">A Felhasználó jogai</a></li>
+      <li class=""><a href="#s-12">Fióktörlés</a></li>
+      <li class=""><a href="#s-13">Adatbiztonság</a></li>
+      <li class=""><a href="#s-14">Gyermekek adatainak kezelése</a></li>
+      <li class=""><a href="#s-15">Panaszkezelés és jogorvoslat</a></li>
+      <li class=""><a href="#s-16">A Tájékoztató módosítása</a></li>
+      <li class=""><a href="#s-17">Kapcsolat</a></li>
+      <li class=""><a href="#s-18">Hatálybalépés</a></li>
+        </ol>
+      </nav>
+      <section>
+      <h2 class="section" id="s-1"><span class="num">1.</span>Bevezetés</h2>
+      <p>Jelen Adatkezelési Tájékoztató ismerteti a Tiny Minds mobilalkalmazás (a továbbiakban:</p>
+      <p>Alkalmazás) használata során végzett adatkezelésekre vonatkozó szabályokat.</p>
+      <p>Az Adatkezelő kiemelt figyelmet fordít arra, hogy a személyes adatok kezelése megfeleljen az Európai Parlament és a Tanács (EU) 2016/679 rendeletének (General Data Protection Regulation – GDPR), valamint az egyéb alkalmazandó adatvédelmi jogszabályoknak.</p>
+      <p>Az Alkalmazás használatával a Felhasználó tudomásul veszi jelen Tájékoztató tartalmát.</p>
+      <h2 class="section" id="s-2"><span class="num">2.</span>Az Adatkezelő adatai</h2>
+      <p><strong>Adatkezelő:</strong> Baráth Csaba egyéni vállalkozó</p>
+      <p><strong>Székhely:</strong> Dorog, Hegyalja utca 1.</p>
+      <p><strong>E-mail:</strong></p>
+      <p><a href="mailto:tinymindsquiz@gmail.com">tinymindsquiz@gmail.com</a></p>
+      <p><strong>Adószám:</strong></p>
+      <p>56467545-1-31</p>
+      <p>Az Adatkezelő felel a személyes adatok jogszerű kezeléséért.</p>
+      <h2 class="section" id="s-3"><span class="num">3.</span>Az adatkezelés alapelvei</h2>
+      <p>Az Adatkezelő az adatkezelés során különösen az alábbi alapelveket alkalmazza:</p>
+      <ul>
+        <li>jogszerűség;</li>
+        <li>tisztességes eljárás;</li>
+        <li>átláthatóság;</li>
+        <li>célhoz kötöttség;</li>
+        <li>adattakarékosság;</li>
+        <li>pontosság;</li>
+        <li>korlátozott tárolhatóság;</li>
+        <li>integritás és bizalmas jelleg;</li>
+        <li>elszámoltathatóság.</li>
+      </ul>
+      <h2 class="section" id="s-4"><span class="num">4.</span>Az alkalmazás célja</h2>
+      <p>A Tiny Minds egy mobiltelefonos tudásalapú kvízjáték.</p>
+      <p>Az Alkalmazás lehetőséget biztosít többek között:</p>
+      <ul>
+        <li>kvízkérdések megválaszolására;</li>
+        <li>pontgyűjtésre;</li>
+        <li>ranglistákban való részvételre;</li>
+        <li>előfizetések használatára;</li>
+        <li>alkalmazáson belüli vásárlásokra;</li>
+        <li>jutalmazott hirdetések megtekintésére;</li>
+        <li>játékstatisztikák vezetésére.</li>
+      </ul>
+      <h2 class="section" id="s-5"><span class="num">5.</span>A kezelt személyes adatok köre</h2>
+      <p>Az Alkalmazás működése során az alábbi személyes adatokat kezelheti:</p>
+      <ul>
+        <li>felhasználónév;</li>
+        <li>e-mail cím;</li>
+        <li>a felhasználó által megadott középiskola vagy felsőoktatási intézmény neve;</li>
+        <li>pontszámok;</li>
+        <li>ranglista adatai;</li>
+        <li>játékstatisztikák;</li>
+        <li>IP-cím;</li>
+        <li>eszközazonosító;</li>
+        <li>előfizetéssel és vásárlásokkal kapcsolatos technikai adatok;</li>
+        <li>alkalmazás használatával kapcsolatos naplóadatok.</li>
+      </ul>
+      <p>Az Adatkezelő kizárólag olyan adatokat kezeli, amelyek az Alkalmazás rendeltetésszerű működéséhez szükségesek.</p>
+      <h2 class="section" id="s-6"><span class="num">6.</span>Az adatkezelés célja</h2>
+      <p>A személyes adatok kezelésének célja különösen:</p>
+      <ul>
+        <li>az Alkalmazás működtetése;</li>
+        <li>a játékállás megőrzése;</li>
+        <li>ranglisták kezelése;</li>
+        <li>pontszámok számítása;</li>
+        <li>játékstatisztikák készítése;</li>
+        <li>előfizetések kezelése;</li>
+        <li>alkalmazáson belüli vásárlások kezelése;</li>
+        <li>hibakeresés;</li>
+        <li>csalások megelőzése;</li>
+        <li>biztonsági események kivizsgálása;</li>
+        <li>ügyfélszolgálati kapcsolattartás;</li>
+        <li>jogszabályi kötelezettségek teljesítése.</li>
+      </ul>
+      <h2 class="section" id="s-7"><span class="num">7.</span>Az adatkezelés jogalapjai</h2>
+      <p>Az adatkezelés jogalapja az adatkezelés céljától függően lehet:</p>
+      <ul>
+        <li>a Felhasználó és az Adatkezelő között létrejövő szerződés teljesítése;</li>
+        <li>az Adatkezelő jogos érdeke;</li>
+        <li>jogszabályi kötelezettség teljesítése;</li>
+        <li>a Felhasználó hozzájárulása, amennyiben azt jogszabály előírja.</li>
+      </ul>
+      <p>Az Adatkezelő minden adatkezelési művelet esetén az alkalmazandó jogalapnak megfelelően jár el.</p>
+      <h2 class="section" id="s-8"><span class="num">8.</span>Adatfeldolgozók és igénybe vett szolgáltatók</h2>
+      <p>Az Adatkezelő az Alkalmazás működtetése során egyes adatkezelési műveletek elvégzéséhez adatfeldolgozókat vagy önálló adatkezelőként eljáró külső szolgáltatókat vehet igénybe.</p>
+      <p>Az Adatkezelő kizárólag olyan szolgáltatókat vesz igénybe, amelyek megfelelő technikai és szervezési intézkedésekkel biztosítják a személyes adatok védelmét.</p>
+      <h3 class="section" id="s-8-1"><span class="num">8.1.</span>Saját szerver</h3>
+      <p>A Tiny Minds működéséhez szükséges felhasználói adatokat az Adatkezelő saját üzemeltetésű szerveren tárolja.</p>
+      <p>A szerveren tárolt adatok különösen:</p>
+      <ul>
+        <li>felhasználónév;</li>
+        <li>e-mail cím;</li>
+        <li>iskola vagy felsőoktatási intézmény neve (ha a Felhasználó megadja);</li>
+        <li>pontszámok;</li>
+        <li>ranglista adatok;</li>
+        <li>játékstatisztikák;</li>
+        <li>IP-cím;</li>
+        <li>eszközazonosító;</li>
+        <li>rendszerüzemeltetési naplóadatok.</li>
+      </ul>
+      <p>Az Adatkezelő megfelelő technikai és szervezési intézkedéseket alkalmaz a jogosulatlan hozzáférés, módosítás, nyilvánosságra hozatal vagy megsemmisítés megelőzése érdekében.</p>
+      <h3 class="section" id="s-8-2"><span class="num">8.2.</span>RevenueCat</h3>
+      <p>Az Alkalmazás az alkalmazáson belüli előfizetések és vásárlások kezeléséhez a RevenueCat szolgáltatását használja.</p>
+      <p>A RevenueCat a vásárlások érvényességének ellenőrzését, az előfizetések kezelését és a kapcsolódó technikai folyamatokat végzi.</p>
+      <p>Az Adatkezelő kizárólag a szolgáltatás működéséhez szükséges adatokat továbbítja.</p>
+      <h3 class="section" id="s-8-3"><span class="num">8.3.</span>Google AdMob</h3>
+      <p>Az Alkalmazás nem személyre szabott hirdetések megjelenítéséhez a Google AdMob szolgáltatását használja.</p>
+      <p>A megjelenített hirdetések nem a Felhasználó érdeklődési körére épülnek.</p>
+      <p>A szolgáltatás működése során bizonyos technikai adatok (például eszközinformációk, IP-cím vagy hirdetési azonosító) kezelése történhet a Google saját adatkezelési szabályzata szerint.</p>
+      <h3 class="section" id="s-8-4"><span class="num">8.4.</span>Google Play Games</h3>
+      <p>Android rendszeren a bejelentkezést és a játékos azonosítását a Google Play Games szolgáltatás biztosíthatja.</p>
+      <p>Az ezen szolgáltatás által kezelt adatok kezelésére a Google saját adatvédelmi szabályzata irányadó.</p>
+      <h3 class="section" id="s-8-5"><span class="num">8.5.</span>Apple Game Center</h3>
+      <p>iOS rendszeren a játékos azonosítását az Apple Game Center biztosíthatja.</p>
+      <p>Az Apple által kezelt személyes adatok kezelésére az Apple saját adatkezelési szabályzata alkalmazandó.</p>
+      <h2 class="section" id="s-9"><span class="num">9.</span>Nemzetközi adattovábbítás</h2>
+      <p>Tekintettel arra, hogy az Alkalmazás egyes külső szolgáltatásokat vesz igénybe, előfordulhat, hogy bizonyos adatok az Európai Gazdasági Térségen kívül kerülnek kezelésre.</p>
+      <p>Az Adatkezelő kizárólag olyan szolgáltatókat vesz igénybe, amelyek az Európai Bizottság által elfogadott megfelelő garanciákkal vagy egyéb jogszerű adattovábbítási mechanizmusokkal rendelkeznek.</p>
+      <h2 class="section" id="s-10"><span class="num">10.</span>Az adatok megőrzésének időtartama</h2>
+      <p>Az Adatkezelő a személyes adatokat kizárólag addig kezeli, ameddig az adatkezelés célja fennáll.</p>
+      <p><strong>Ennek megfelelően:</strong></p>
+      <ul>
+        <li>a játékhoz kapcsolódó adatokat a Felhasználó fiókjának fennállásáig;</li>
+        <li>az előfizetésekkel és vásárlásokkal kapcsolatos adatokat a vonatkozó jogszabályokban előírt ideig;</li>
+        <li>naplóállományokat a biztonsági és üzemeltetési célokhoz szükséges ideig;</li>
+        <li>jogszabály alapján kötelezően megőrzendő adatokat a jogszabályban meghatározott időtartamig kezeli.</li>
+      </ul>
+      <p>A Felhasználó kérheti fiókjának törlését. A törlés után az Adatkezelő indokolatlan késedelem nélkül törli vagy anonimizálja azokat a személyes adatokat, amelyek további kezelésére már nincs jogalap.</p>
+      <h2 class="section" id="s-11"><span class="num">11.</span>A Felhasználó jogai</h2>
+      <p>A GDPR alapján a Felhasználót különösen az alábbi jogok illetik meg:</p>
+      <ul>
+        <li>tájékoztatáshoz való jog;</li>
+        <li>hozzáférési jog;</li>
+        <li>helyesbítéshez való jog;</li>
+        <li>törléshez (“elfeledtetéshez”) való jog;</li>
+        <li>adatkezelés korlátozásához való jog;</li>
+        <li>adathordozhatósághoz való jog;</li>
+        <li>tiltakozáshoz való jog;</li>
+        <li>hozzájárulás visszavonásának joga (amennyiben az adatkezelés hozzájáruláson alapul).</li>
+      </ul>
+      <p>Az Adatkezelő a kérelmeket indokolatlan késedelem nélkül, de legkésőbb a GDPR-ban meghatározott határidőn belül bírálja el.</p>
+      <h2 class="section" id="s-12"><span class="num">12.</span>Fióktörlés</h2>
+      <p>A Felhasználó jogosult a Tiny Minds alkalmazásban létrehozott fiókjának törlését kezdeményezni.</p>
+      <p>A fiók törlésével az Alkalmazásban tárolt személyes adatok törlésre vagy anonimizálásra kerülnek, kivéve azokat az adatokat, amelyek megőrzését jogszabály írja elő vagy amelyek kezelése jogi igények érvényesítéséhez, védelméhez vagy teljesítéséhez szükséges.</p>
+      <p>A fiók törlése nem feltétlenül érinti a Google Play Games, az Apple Game Center vagy más külső szolgáltatók által kezelt adatokat, amelyekre azok saját adatkezelési szabályzatai irányadók.</p>
+      <h2 class="section" id="s-13"><span class="num">13.</span>Adatbiztonság</h2>
+      <p>Az Adatkezelő megfelelő technikai és szervezési intézkedéseket alkalmaz annak érdekében, hogy a kezelt személyes adatok biztonságát biztosítsa, valamint megakadályozza azok jogosulatlan megismerését, megváltoztatását, továbbítását, nyilvánosságra hozatalát, törlését vagy megsemmisítését.</p>
+      <p>Az Adatkezelő különösen az alábbi intézkedéseket alkalmazhat:</p>
+      <ul>
+        <li>titkosított adatkapcsolat (HTTPS/TLS);</li>
+        <li>hozzáférési jogosultságok korlátozása;</li>
+        <li>naplózás és biztonsági események nyomon követése;</li>
+        <li>rendszeres biztonsági mentések;</li>
+        <li>szerveroldali hozzáférés-védelem;</li>
+        <li>rendszeres biztonsági frissítések;</li>
+        <li>a személyes adatokhoz való hozzáférés korlátozása kizárólag azon személyek részére, akiknek az munkaköri feladataik ellátásához szükséges.</li>
+      </ul>
+      <p>Az Adatkezelő minden tőle észszerűen elvárható intézkedést megtesz a személyes adatok biztonságának megőrzése érdekében, ugyanakkor az interneten történő adattovábbítás teljes biztonsága nem garantálható.</p>
+      <h2 class="section" id="s-14"><span class="num">14.</span>Gyermekek adatainak kezelése</h2>
+      <p>A Tiny Minds alkalmazás használata során az Adatkezelő kiemelt figyelmet fordít a gyermekek személyes adatainak védelmére.</p>
+      <p>A 16. életévüket be nem töltött felhasználók kizárólag törvényes képviselőjük hozzájárulásával jogosultak a Szolgáltatás használatára, amennyiben azt az alkalmazandó jogszabályok előírják.</p>
+      <p>Az Alkalmazás első indításakor a Felhasználó nyilatkozhat életkoráról. A 16 év alatti Felhasználó kijelenti, hogy a szolgáltatás használatához – amennyiben azt a vonatkozó jogszabályok előírják – rendelkezik a szükséges szülői vagy törvényes képviselői hozzájárulással.</p>
+      <p>Az Adatkezelő fenntartja a jogot arra, hogy amennyiben hitelt érdemlően tudomására jut, hogy a gyermek személyes adatainak kezelése jogellenesen történt, a felhasználói fiókot korlátozza vagy törölje.</p>
+      <h2 class="section" id="s-15"><span class="num">15.</span>Panaszkezelés és jogorvoslat</h2>
+      <p>Amennyiben a Felhasználó úgy véli, hogy személyes adatainak kezelése sérti a vonatkozó adatvédelmi jogszabályokat, jogosult az Adatkezelőhöz fordulni az alábbi elérhetőségen:</p>
+      <p><strong>E-mail:</strong> <a href="mailto:tinymindsquiz@gmail.com">tinymindsquiz@gmail.com</a></p>
+      <p>Az Adatkezelő törekszik arra, hogy minden megkeresést indokolatlan késedelem nélkül kivizsgáljon és megválaszoljon.</p>
+      <p>Amennyiben a Felhasználó az Adatkezelő válaszát nem tartja megfelelőnek, panaszt nyújthat be a lakóhelye vagy tartózkodási helye szerinti adatvédelmi felügyeleti hatósághoz, illetve – amennyiben az Adatkezelő Magyarországon telepedett le – a Nemzeti Adatvédelmi és Információszabadság Hatósághoz (NAIH).</p>
+      <p>A Felhasználót megilleti továbbá a bírósági jogorvoslathoz való jog is a GDPR és az alkalmazandó jogszabályok rendelkezései szerint.</p>
+      <h2 class="section" id="s-16"><span class="num">16.</span>A Tájékoztató módosítása</h2>
+      <p>Az Adatkezelő jogosult jelen Adatkezelési Tájékoztatót egyoldalúan módosítani, amennyiben:</p>
+      <ul>
+        <li>jogszabályváltozás indokolja;</li>
+        <li>új szolgáltatás vagy funkció kerül bevezetésre;</li>
+        <li>új adatkezelési cél válik szükségessé;</li>
+        <li>adatfeldolgozó vagy technológiai megoldás változik;</li>
+        <li>az Adatkezelő működésében olyan változás következik be, amely az adatkezelést érinti.</li>
+      </ul>
+      <p>A módosított Tájékoztató az Alkalmazásban, illetve az Adatkezelő által meghatározott egyéb felületen kerül közzétételre.</p>
+      <p>Lényeges módosítás esetén az Adatkezelő a Felhasználókat az Alkalmazáson belül megfelelő módon tájékoztatja.</p>
+      <h2 class="section" id="s-17"><span class="num">17.</span>Kapcsolat</h2>
+      <p>Amennyiben jelen Adatkezelési Tájékoztatóval kapcsolatban kérdése merül fel, az Adatkezelő az alábbi elérhetőségen áll rendelkezésre:</p>
+      <p><strong>E-mail:</strong> <a href="mailto:tinyminds@gmail.com">tinyminds@gmail.com</a></p>
+      <h2 class="section" id="s-18"><span class="num">18.</span>Hatálybalépés</h2>
+      <p>Jelen Adatkezelési Tájékoztató a fejlécben megjelölt napon lép hatályba, és visszavonásig vagy módosításáig érvényes.</p>
+      <p>A Tiny Minds alkalmazás használatának megkezdésével a Felhasználó tudomásul veszi jelen Adatkezelési Tájékoztató rendelkezéseit.</p>
+      <p>Adatvédelmi incidensek</p>
+      <p>Az Adatkezelő minden tőle észszerűen elvárható technikai és szervezési intézkedést megtesz a személyes adatok biztonságának megőrzése érdekében.</p>
+      <p>Amennyiben olyan adatvédelmi incidens következik be, amely a Felhasználók jogaira és szabadságaira nézve valószínűsíthetően kockázattal jár, az Adatkezelő a hatályos jogszabályoknak megfelelően jár el, ideértve szükség esetén az illetékes felügyeleti hatóság és az érintett Felhasználók értesítését is.</p>
+      <p>Automatizált döntéshozatal és profilalkotás</p>
+      <p>Az Adatkezelő a személyes adatok kezelése során nem alkalmaz a GDPR 22. cikke szerinti automatizált döntéshozatalt vagy profilalkotást.</p>
+      </section>
+    </main>
+    <footer>
+      <p>Tiny Minds — Baráth Csaba egyéni vállalkozó · Dorog, Hegyalja utca 1. · tinymindsquiz@gmail.com</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TinyMinds Quiz — Tanulj a hősökkel!</title>
+    <meta
+      name="description"
+      content="TinyMinds: kvízjáték gyerekeknek — 8 témakör, 8 hős, ezernyi kérdés. Hamarosan az App Store-ban és a Google Play-en."
+    />
+    <meta property="og:title" content="TinyMinds Quiz" />
+    <meta
+      property="og:description"
+      content="Kvízjáték gyerekeknek — 8 témakör, 8 hős, ezernyi kérdés. Hamarosan az App Store-ban és a Google Play-en."
+    />
+    <meta property="og:image" content="https://tinyminds.hu/assets/hopps.png" />
+    <meta property="og:url" content="https://tinyminds.hu/" />
+    <link rel="icon" type="image/png" href="/assets/hopps.png" />
+    <link rel="apple-touch-icon" href="/assets/hopps.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy: #344580;
+        --navy-deep: #253156;
+        --blue: #6189ce;
+        --blue-light: #97ade4;
+        --card: #e4eaff;
+        --green: #4caf50;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: linear-gradient(170deg, var(--navy) 0%, var(--navy-deep) 100%);
+        color: #fff;
+        font-family:
+          'Baloo 2',
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          Roboto,
+          Arial,
+          sans-serif;
+        line-height: 1.55;
+        display: flex;
+        flex-direction: column;
+      }
+      main {
+        flex: 1;
+        width: 100%;
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 48px 24px 32px;
+      }
+      .hero {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+      }
+      .hero-text {
+        flex: 1;
+        min-width: 0;
+      }
+      .logo {
+        width: min(300px, 70vw);
+        height: auto;
+        display: block;
+        margin-bottom: 20px;
+      }
+      h1 {
+        margin: 0 0 10px;
+        font-size: clamp(26px, 4.5vw, 38px);
+        font-weight: 700;
+        line-height: 1.2;
+      }
+      .lead {
+        margin: 0 0 8px;
+        font-size: clamp(17px, 2.4vw, 20px);
+        color: var(--card);
+      }
+      .lead-en {
+        margin: 0 0 26px;
+        font-size: 15px;
+        color: var(--blue-light);
+      }
+      .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 30px;
+      }
+      .badge {
+        border: 1.5px solid var(--blue-light);
+        border-radius: 999px;
+        padding: 9px 20px;
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--card);
+        white-space: nowrap;
+      }
+      .badge small {
+        color: var(--blue-light);
+        font-weight: 500;
+      }
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+      .links a {
+        background: var(--card);
+        color: var(--navy-deep);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 16px;
+        padding: 13px 24px;
+        border-radius: 14px;
+        transition: transform 0.12s ease;
+      }
+      .links a:hover {
+        transform: translateY(-2px);
+      }
+      .hero-figure {
+        flex: 0 0 auto;
+        width: min(230px, 32vw);
+      }
+      .hero-figure img {
+        width: 100%;
+        height: auto;
+        display: block;
+        filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.35));
+      }
+      footer {
+        border-top: 1px solid rgba(151, 173, 228, 0.35);
+        padding: 22px 24px 30px;
+        text-align: center;
+        font-size: 13px;
+        color: var(--blue-light);
+      }
+      footer nav {
+        margin-bottom: 8px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px 18px;
+      }
+      footer a {
+        color: var(--card);
+        text-decoration: none;
+      }
+      footer a:hover {
+        text-decoration: underline;
+      }
+      @media (max-width: 620px) {
+        .hero {
+          flex-direction: column-reverse;
+          text-align: center;
+        }
+        .logo {
+          margin-inline: auto;
+        }
+        .badges,
+        .links {
+          justify-content: center;
+        }
+        .hero-figure {
+          width: 150px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="hero">
+        <div class="hero-text">
+          <img class="logo" src="/assets/logo.png" alt="Tiny Minds" />
+          <h1>Tanulj a hősökkel!</h1>
+          <p class="lead">
+            Kvízjáték gyerekeknek — 8 témakör, 8 hős és ezernyi izgalmas kérdés.
+            Válaszolj helyesen, és a hőseid veled együtt fejlődnek!
+          </p>
+          <p class="lead-en">
+            A playful quiz game for kids — 8 topics, 8 heroes, thousands of
+            questions.
+          </p>
+          <div class="badges">
+            <span class="badge">App Store · <small>hamarosan</small></span>
+            <span class="badge">Google Play · <small>hamarosan</small></span>
+          </div>
+          <div class="links">
+            <a href="/support">💬 Támogatás / Support</a>
+            <a href="/legal">📄 Jogi dokumentumok / Legal</a>
+          </div>
+        </div>
+        <div class="hero-figure">
+          <img src="/assets/lord-hopps.png" alt="Lord Hopps, a történelem hőse" />
+        </div>
+      </div>
+    </main>
+    <footer>
+      <nav>
+        <a href="/hu/aszf">ÁSZF</a>
+        <a href="/hu/adatkezelesi-tajekoztato">Adatkezelési tájékoztató</a>
+        <a href="/en/terms-and-conditions">Terms</a>
+        <a href="/en/privacy-policy">Privacy Policy</a>
+      </nav>
+      Tiny Minds — Baráth Csaba egyéni vállalkozó · Dorog, Hegyalja utca 1. ·
+      <a href="mailto:tinymindsquiz@gmail.com">tinymindsquiz@gmail.com</a>
+    </footer>
+  </body>
+</html>
