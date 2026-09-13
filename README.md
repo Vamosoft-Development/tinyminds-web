@@ -13,7 +13,8 @@ automatically**. No build step; `vercel.json` enables `cleanUrls`, so
 
 | Path | Page |
 | --- | --- |
-| `/` | Landing page (`index.html`, hand-written) |
+| `/` | Landing page, Hungarian (`index.html`, hand-written) |
+| `/en` | Landing page, English (`en/index.html`, hand-written; shares `assets/site.css` + `assets/site.js`) |
 | `/support` | Support / contact (`support.html`, hand-written, bilingual) |
 | `/legal` | Document index (`legal.html`, hand-written) |
 | `/hu/aszf` · `/hu/adatkezelesi-tajekoztato` | Hungarian legal documents (generated) |
@@ -39,3 +40,23 @@ When a new document version arrives:
 2. Copy the changed `.pdf` + regenerated `.html` here (paths are identical),
    or drop the PDF in place and run `node scripts/build.mjs`.
 3. Commit and push — CI proves fidelity, Vercel deploys.
+
+## Landing page assets
+
+The landing uses the app's own brand: colours from
+`apps/mobile/lib/theme/colors.ts` (navy `#344580`, blue `#6189CE`, light blue
+`#97ADE4`, card `#E4EAFF`, ink `#253156`, green `#4CAF50`) and the app's fonts,
+self-hosted as woff2 in `assets/fonts/` (Pally by Indian Type Foundry via
+Fontshare, Objectivity by Alexander Slobzheninov — the same files the app
+bundles). Tokens live at the top of `assets/site.css`.
+
+`assets/heroes/` (hero portraits + standing art) and `assets/icons/` are copies of
+the mobile app's bundled assets — re-copy from the monorepo when the art changes.
+`assets/illustrations/*.webp` are flat storybook-style scene illustrations
+generated with Higgsfield (GPT Image) from the hero art as references; regenerate
+in the same style if a new section needs one. `assets/og.png` is the social
+preview card. Store badges come from Apple's and Google's official badge
+services; the copy on the landing page mirrors the live App Store / Google Play
+listings (name, subtitle, description, subscription terms, age rating) — update
+both when the listing changes. The Hungarian and English landing pages are
+written separately — keep their sections in sync when one of them changes.

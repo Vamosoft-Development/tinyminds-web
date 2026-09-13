@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TinyMinds Quiz — Put your knowledge to the test! A trivia game with 8 topics and 8 heroes</title>
+    <meta
+      name="description"
+      content="TinyMinds Quiz: a free trivia game for everyone. 8 topics, 8 heroes, thousands of questions, daily challenges, mini quests and leaderboards. Download it on the App Store or Google Play!"
+    />
+    <link rel="canonical" href="https://tinyminds.hu/en" />
+    <link rel="alternate" hreflang="hu" href="https://tinyminds.hu/" />
+    <link rel="alternate" hreflang="en" href="https://tinyminds.hu/en" />
+    <link rel="alternate" hreflang="x-default" href="https://tinyminds.hu/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="TinyMinds Quiz — Put your knowledge to the test!" />
+    <meta
+      property="og:description"
+      content="A free trivia game for everyone: 8 topics, 8 heroes, thousands of questions. Answer correctly and watch your heroes grow stronger!"
+    />
+    <meta property="og:image" content="https://tinyminds.hu/assets/og.png" />
+    <meta property="og:url" content="https://tinyminds.hu/en" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="hu_HU" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="apple-itunes-app" content="app-id=6779207580" />
+    <link rel="icon" type="image/png" href="/assets/hopps.png" />
+    <link rel="apple-touch-icon" href="/assets/hopps.png" />
+    <link rel="stylesheet" href="/assets/site.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MobileApplication",
+        "name": "TinyMinds Quiz",
+        "operatingSystem": "iOS, Android",
+        "applicationCategory": "GameApplication",
+        "applicationSubCategory": "Trivia",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "inLanguage": ["hu", "en"],
+        "url": "https://tinyminds.hu/en",
+        "downloadUrl": [
+          "https://apps.apple.com/app/id6779207580",
+          "https://play.google.com/store/apps/details?id=hu.tinyminds.app&hl=en"
+        ],
+        "author": { "@type": "Person", "name": "Csaba Baráth" }
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="/en" aria-label="TinyMinds Quiz home">
+          <img src="/assets/logo.png" alt="TinyMinds" />
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          Menu
+        </button>
+        <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+          <a href="#how-it-works">How it works</a>
+          <a href="#heroes">Heroes</a>
+          <a href="#game-modes">Game modes</a>
+          <a href="#faq">FAQ</a>
+          <a href="/support">Support</a>
+          <a class="lang-switch" href="/" lang="hu" hreflang="hu" title="Ez az oldal magyarul">
+            🇭🇺 Magyar
+          </a>
+          <a class="btn btn-primary" href="#download">Download</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero">
+        <div class="container split">
+          <div>
+            <span class="eyebrow">A free trivia game for iPhone and Android</span>
+            <h1 class="display">Put your knowledge to the test!</h1>
+            <p class="lead">
+              Find your favourite subject and climb as high as you can. Answer correctly and
+              your heroes grow stronger with every game. Learn something new every day – eight
+              heroes and countless exciting questions are waiting for you. This is TinyMinds!
+            </p>
+            <div class="store-badges">
+              <a
+                class="store-badge"
+                href="https://apps.apple.com/app/id6779207580"
+                aria-label="Download on the App Store"
+              >
+                <img src="/assets/badge-app-store-en.svg" alt="Download on the App Store" />
+              </a>
+              <a
+                class="store-badge"
+                href="https://play.google.com/store/apps/details?id=hu.tinyminds.app&hl=en"
+                aria-label="Get it on Google Play"
+              >
+                <img src="/assets/badge-google-play-en.png" alt="Get it on Google Play" />
+              </a>
+            </div>
+            <div class="hero-facts">
+              <span class="pill pill-green">Free</span>
+              <span class="pill">★ 5.0 on the App Store</span>
+              <span class="pill">Rated 4+ · PEGI 3</span>
+              <span class="pill">English and Hungarian</span>
+            </div>
+          </div>
+          <div class="split-art">
+            <img
+              src="/assets/illustrations/heroes-celebrate.webp"
+              alt="Lord Hopps, Luna, Cinnamon and Roxie celebrating around a golden trophy"
+              width="1000"
+              height="744"
+              fetchpriority="high"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats -->
+      <section class="stats" aria-label="The game in numbers">
+        <div class="container">
+          <div class="stats-grid">
+            <div class="stat"><strong>8</strong><span>topics</span></div>
+            <div class="stat"><strong>8+1</strong><span>heroes</span></div>
+            <div class="stat"><strong>3</strong><span>difficulty levels</span></div>
+            <div class="stat"><strong>1000+</strong><span>questions</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How it works -->
+      <section id="how-it-works">
+        <div class="container">
+          <span class="eyebrow">How it works</span>
+          <h2 class="heading">Quick quizzes, exciting challenges</h2>
+          <p class="lead">
+            A game is ten questions long – just right for a bus ride or a coffee break. Pick a
+            topic and a hero, answer, collect gold and stars, and level up!
+          </p>
+          <div class="steps">
+            <article class="step">
+              <img
+                src="/assets/illustrations/step-pick-topic.webp"
+                alt="Cinnamon pointing at a stack of eight books"
+                loading="lazy"
+              />
+              <span class="step-number">1</span>
+              <h3 class="subheading">Pick a topic and a hero</h3>
+              <p>
+                History, geography, literature, nature, science, art, entertainment or sport –
+                each one has its own hero, and you are the one who trains them.
+              </p>
+            </article>
+            <article class="step">
+              <img
+                src="/assets/illustrations/step-answer.webp"
+                alt="Luna holding up a phone with the correct answer highlighted in green"
+                loading="lazy"
+              />
+              <span class="step-number">2</span>
+              <h3 class="subheading">Answer the questions</h3>
+              <p>
+                Ten questions, four options each, and a ticking clock. If you get stuck, the
+                helpers step in: the halver, the freeze, the shield or a topic swap.
+              </p>
+            </article>
+            <article class="step">
+              <img
+                src="/assets/illustrations/step-level-up.webp"
+                alt="Roxie jumping with a golden star next to a green arrow pointing up"
+                loading="lazy"
+              />
+              <span class="step-number">3</span>
+              <h3 class="subheading">Level up your heroes</h3>
+              <p>
+                Every correct answer earns gold, stars and XP. Stars level up your heroes, and
+                higher levels bring tougher questions and bigger rewards.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Heroes -->
+      <section id="heroes">
+        <div class="container">
+          <span class="eyebrow">The heroes</span>
+          <h2 class="heading">Eight heroes, eight topics</h2>
+          <p class="lead">
+            Each hero is an expert in one field. They all have their own lives, level and stars
+            – one glance at the Heroes Room tells you who is doing best.
+          </p>
+          <div class="hero-grid">
+            <article class="hero-card" style="--hero-color: #374267">
+              <img src="/assets/heroes/lord-hopps-portrait.png" alt="Lord Hopps the rabbit" loading="lazy" />
+              <strong>Lord Hopps</strong>
+              <span>History</span>
+            </article>
+            <article class="hero-card" style="--hero-color: #e2632c">
+              <img src="/assets/heroes/cinnamon-portrait.png" alt="Cinnamon the red panda" loading="lazy" />
+              <strong>Cinnamon</strong>
+              <span>Geography</span>
+            </article>
+            <article class="hero-card" style="--hero-color: #3e9eb5">
+              <img src="/assets/heroes/hamlet-portrait.png" alt="Hamlet the goat" loading="lazy" />
+              <strong>Hamlet</strong>
+              <span>Literature</span>
+            </article>
+            <article class="hero-card" style="--hero-color: #5da63a">
+              <img src="/assets/heroes/kiwi-portrait.png" alt="Kiwi the kiwi bird" loading="lazy" />
+              <strong>Kiwi</strong>
+              <span>Nature</span>
+            </article>
+            <article class="hero-card" style="--hero-color: #8b6da0">
+              <img src="/assets/heroes/luna-portrait.png" alt="Luna the panda" loading="lazy" />
+              <strong>Luna</strong>
+              <span>Entertainment</span>
+            </article>
+            <article class="hero-card" style="--hero-color: #a8221e">
+              <img src="/assets/heroes/roxie-portrait.png" alt="Roxie the tiger" loading="lazy" />
+              <strong>Roxie</strong>
+              <span>Sport</span>
+            </article>
+            <article class="hero-card" style="--hero-color: #50765a">
+              <img src="/assets/heroes/nevada-portrait.png" alt="Nevada the penguin" loading="lazy" />
+              <strong>Nevada</strong>
+              <span>Art</span>
+            </article>
+            <article class="hero-card" style="--hero-color: #e6b12c">
+              <img src="/assets/heroes/malmo-portrait.png" alt="Malmö the giraffe" loading="lazy" />
+              <strong>Malmö</strong>
+              <span>Science</span>
+            </article>
+          </div>
+          <div class="hero-grid hero-grid-single">
+            <article class="hero-card bonus" style="--hero-color: #5b2a8c">
+              <img src="/assets/heroes/mormota-portrait.png" alt="Mormota, the bonus hero" loading="lazy" />
+              <strong>+1 Mormota</strong>
+              <span>Bonus hero</span>
+              <p class="hero-card-note">
+                The ninth hero is unlocked with gold. Mormota produces diamonds for you every
+                day, and diamonds buy the most valuable packs in the shop.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Game modes -->
+      <section id="game-modes">
+        <div class="container">
+          <span class="eyebrow">Game modes</span>
+          <h2 class="heading">A reason to come back every day</h2>
+          <p class="lead">
+            The quiz is only the beginning. Daily and weekly goals, mini quests on niche topics
+            and leaderboards keep the game moving.
+          </p>
+          <div class="modes">
+            <article class="mode">
+              <img
+                src="/assets/illustrations/mode-daily-challenges.webp"
+                alt="Kiwi next to a calendar with green check marks and a golden star"
+                loading="lazy"
+              />
+              <div>
+                <h3 class="subheading">Daily challenges</h3>
+                <p>
+                  Fresh tasks every day: play a few rounds, answer correctly in a given topic,
+                  collect stars. Complete them and extra gold lands in your pocket.
+                </p>
+              </div>
+            </article>
+            <article class="mode">
+              <img
+                src="/assets/illustrations/mode-mini-quests.webp"
+                alt="Malmö holding a ticket and a treasure map"
+                loading="lazy"
+              />
+              <div>
+                <h3 class="subheading">Mini quests</h3>
+                <p>
+                  Narrow, exciting topics – World War II, astronomy, Formula 1 or Renaissance
+                  art, for example. Tickets get you in, and a separate leaderboard shows how you
+                  measure up.
+                </p>
+              </div>
+            </article>
+            <article class="mode">
+              <img
+                src="/assets/illustrations/mode-leaderboard.webp"
+                alt="Lord Hopps, Luna and Cinnamon on a podium in front of a school building"
+                loading="lazy"
+              />
+              <div>
+                <h3 class="subheading">Leaderboards and schools</h3>
+                <p>
+                  A weekly XP leaderboard for players, and a separate one for schools: tell us
+                  where you study, and every correct answer counts for your school as well.
+                  Game Center and Google Play Games supported.
+                </p>
+              </div>
+            </article>
+            <article class="mode">
+              <img
+                src="/assets/illustrations/mode-weekly-rewards.webp"
+                alt="Lord Hopps carrying gift boxes, with a medal and coins spilling out of the top one"
+                loading="lazy"
+              />
+              <div>
+                <h3 class="subheading">Weekly rewards</h3>
+                <p>
+                  The more correct answers you give during the week, the further you climb the
+                  weekly reward ladder: gold, diamonds, helpers and phoenixes that revive an
+                  exhausted hero.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- For everyone -->
+      <section>
+        <div class="container split reverse">
+          <div>
+            <span class="eyebrow">Who it's for</span>
+            <h2 class="heading">Not just for kids</h2>
+            <p class="lead">
+              TinyMinds is for anyone who likes a battle of wits: students revising the fun
+              way, adults who love a good pub quiz, and grandparents keen to show how much they
+              know. Three difficulty levels make sure it is never too easy – or too hard – for
+              anyone.
+            </p>
+            <div class="tag-row">
+              <span class="pill">English and Hungarian</span>
+              <span class="pill">iPhone · iPad · Android</span>
+              <span class="pill">No sign-up needed</span>
+            </div>
+          </div>
+          <div class="split-art">
+            <img
+              src="/assets/illustrations/for-everyone.webp"
+              alt="A teenager, a young woman and a grandfather playing a quiz on their phones, with Lord Hopps beside them"
+              loading="lazy"
+              width="1000"
+              height="720"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Shop & support -->
+      <section id="shop">
+        <div class="container split">
+          <div>
+            <span class="eyebrow">Shop and supporter packs</span>
+            <h2 class="heading">Free – and staying that way</h2>
+            <p class="lead">
+              TinyMinds is free to download and play; the app contains ads. You can earn gold
+              and helpers simply by playing. If you would like to move faster or support the
+              development, the shop offers one-time packs and a monthly Supporter subscription.
+            </p>
+            <ul class="plan-list">
+              <li>
+                <strong>Monthly Supporter – Basic</strong>
+                <span>50 tickets, 20 phoenixes and 30,000 gold every month.</span>
+              </li>
+              <li>
+                <strong>Monthly Supporter – Extra</strong>
+                <span>Unlimited tickets, plus 40 phoenixes and 60,000 gold every month.</span>
+              </li>
+            </ul>
+            <p class="fine-print">
+              The subscription runs for one month and renews automatically unless you cancel it
+              in your App Store or Google Play settings at least 24 hours before the end of the
+              current period. Details:
+              <a href="/en/terms-and-conditions">Terms of Use (EULA)</a> ·
+              <a href="/en/privacy-policy">Privacy Policy</a>
+            </p>
+          </div>
+          <div class="split-art">
+            <img
+              src="/assets/illustrations/shop-chest.webp"
+              alt="A treasure chest full of gold coins and diamonds with a phoenix on the lid and helper icons beside it"
+              loading="lazy"
+              width="890"
+              height="979"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Download band -->
+      <section class="download-band" id="download">
+        <div class="container">
+          <h2 class="heading">Download it and start playing!</h2>
+          <p>
+            Available for iPhone, iPad and Android phones. No sign-up required – your first
+            quiz can start right after installing.
+          </p>
+          <div class="store-badges">
+            <a
+              class="store-badge"
+              href="https://apps.apple.com/app/id6779207580"
+              aria-label="Download on the App Store"
+            >
+              <img src="/assets/badge-app-store-en.svg" alt="Download on the App Store" />
+            </a>
+            <a
+              class="store-badge"
+              href="https://play.google.com/store/apps/details?id=hu.tinyminds.app&hl=en"
+              aria-label="Get it on Google Play"
+            >
+              <img src="/assets/badge-google-play-en.png" alt="Get it on Google Play" />
+            </a>
+          </div>
+          <div class="hero-facts">
+            <span class="pill">iOS 15.1 or later</span>
+            <span class="pill">Android phones and tablets</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq">
+        <div class="container">
+          <span class="eyebrow">Frequently asked questions</span>
+          <h2 class="heading heading-dark">Good to know</h2>
+          <div class="faq">
+            <details>
+              <summary>Is the game really free?</summary>
+              <p>
+                Yes. TinyMinds is free to download and the whole game can be played without
+                buying anything. The app contains ads, and if you choose to watch a rewarded
+                video you get extra gold, tickets or a phoenix. Supporter packs and
+                subscriptions are optional.
+              </p>
+            </details>
+            <details>
+              <summary>What age is it for?</summary>
+              <p>
+                Everyone. The store rating is 4+ (App Store) and PEGI 3 (Google Play), and the
+                questions come in three difficulty levels, so there is something for everyone
+                from primary school pupils to grandparents.
+              </p>
+            </details>
+            <details>
+              <summary>Do I need to sign up?</summary>
+              <p>
+                No. On first launch you only pick a player name and, if you like, a school. Your
+                progress is tied to your device and to your Game Center or Google Play Games
+                account, so it can be restored after a reinstall.
+              </p>
+            </details>
+            <details>
+              <summary>Which languages can I play in?</summary>
+              <p>
+                English and Hungarian. You choose the language on first launch and can switch it
+                any time in the settings – the questions are available in both languages.
+              </p>
+            </details>
+            <details>
+              <summary>How do I restore my purchases or delete my account?</summary>
+              <p>
+                Both options are in the app on the Settings screen: “Restore purchases” and
+                “Delete account”. Deleting your account permanently removes all data associated
+                with it. You can find more help on the <a href="/support">support page</a>.
+              </p>
+            </details>
+            <details>
+              <summary>I found a bug or have a question. Where can I write?</summary>
+              <p>
+                Email us at
+                <a href="mailto:tinymindsquiz@gmail.com">tinymindsquiz@gmail.com</a> and we will
+                get back to you as soon as we can.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <img src="/assets/logo.png" alt="TinyMinds" />
+            <p>
+              TinyMinds Quiz – a trivia game for everyone. Eight topics, eight heroes, thousands
+              of questions in English and Hungarian.
+            </p>
+            <p>
+              Provider: Csaba Baráth, sole trader · Dorog, Hegyalja utca 1., Hungary ·
+              <a href="mailto:tinymindsquiz@gmail.com">tinymindsquiz@gmail.com</a>
+            </p>
+          </div>
+          <div>
+            <h4>Download</h4>
+            <ul>
+              <li><a href="https://apps.apple.com/app/id6779207580">App Store</a></li>
+              <li>
+                <a href="https://play.google.com/store/apps/details?id=hu.tinyminds.app&hl=en">Google Play</a>
+              </li>
+              <li><a href="/support">Support</a></li>
+              <li><a href="/" lang="hu" hreflang="hu">Ez az oldal magyarul</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="/en/terms-and-conditions">Terms and Conditions</a></li>
+              <li><a href="/en/privacy-policy">Privacy Policy</a></li>
+              <li><a href="/hu/aszf" lang="hu">ÁSZF (Hungarian)</a></li>
+              <li><a href="/hu/adatkezelesi-tajekoztato" lang="hu">Adatkezelési tájékoztató (Hungarian)</a></li>
+              <li><a href="/legal">All documents</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          © <span id="year">2026</span> TinyMinds · Apple, the App Store and the Apple logo are
+          trademarks of Apple Inc. Google Play and the Google Play logo are trademarks of Google
+          LLC.
+        </div>
+      </div>
+    </footer>
+
+    <script src="/assets/site.js"></script>
+  </body>
+</html>

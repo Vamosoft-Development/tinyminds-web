@@ -3,216 +3,530 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>TinyMinds Quiz — Tanulj a hősökkel!</title>
+    <title>TinyMinds Quiz — Teszteld a tudásod! Kvízjáték 8 témakörrel és 8 hőssel</title>
     <meta
       name="description"
-      content="TinyMinds: kvízjáték gyerekeknek — 8 témakör, 8 hős, ezernyi kérdés. Hamarosan az App Store-ban és a Google Play-en."
+      content="TinyMinds Quiz: ingyenes kvízjáték mindenkinek. 8 témakör, 8 hős, több ezer kérdés, napi kihívások, mini küldetések és ranglisták. Töltsd le az App Store-ból vagy a Google Play-ről!"
     />
-    <meta property="og:title" content="TinyMinds Quiz" />
+    <link rel="canonical" href="https://tinyminds.hu/" />
+    <link rel="alternate" hreflang="hu" href="https://tinyminds.hu/" />
+    <link rel="alternate" hreflang="en" href="https://tinyminds.hu/en" />
+    <link rel="alternate" hreflang="x-default" href="https://tinyminds.hu/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="TinyMinds Quiz — Teszteld a tudásod!" />
     <meta
       property="og:description"
-      content="Kvízjáték gyerekeknek — 8 témakör, 8 hős, ezernyi kérdés. Hamarosan az App Store-ban és a Google Play-en."
+      content="Ingyenes kvízjáték mindenkinek: 8 témakör, 8 hős, több ezer kérdés. Válaszolj helyesen, és a hőseid veled együtt fejlődnek!"
     />
-    <meta property="og:image" content="https://tinyminds.hu/assets/hopps.png" />
+    <meta property="og:image" content="https://tinyminds.hu/assets/og.png" />
     <meta property="og:url" content="https://tinyminds.hu/" />
+    <meta property="og:locale" content="hu_HU" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="apple-itunes-app" content="app-id=6779207580" />
     <link rel="icon" type="image/png" href="/assets/hopps.png" />
     <link rel="apple-touch-icon" href="/assets/hopps.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --navy: #344580;
-        --navy-deep: #253156;
-        --blue: #6189ce;
-        --blue-light: #97ade4;
-        --card: #e4eaff;
-        --green: #4caf50;
+    <link rel="stylesheet" href="/assets/site.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MobileApplication",
+        "name": "TinyMinds Quiz",
+        "operatingSystem": "iOS, Android",
+        "applicationCategory": "GameApplication",
+        "applicationSubCategory": "Trivia",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "HUF" },
+        "inLanguage": ["hu", "en"],
+        "url": "https://tinyminds.hu/",
+        "downloadUrl": [
+          "https://apps.apple.com/hu/app/id6779207580",
+          "https://play.google.com/store/apps/details?id=hu.tinyminds.app"
+        ],
+        "author": { "@type": "Person", "name": "Baráth Csaba" }
       }
-      * {
-        box-sizing: border-box;
-      }
-      body {
-        margin: 0;
-        min-height: 100vh;
-        background: linear-gradient(170deg, var(--navy) 0%, var(--navy-deep) 100%);
-        color: #fff;
-        font-family:
-          'Baloo 2',
-          -apple-system,
-          BlinkMacSystemFont,
-          'Segoe UI',
-          Roboto,
-          Arial,
-          sans-serif;
-        line-height: 1.55;
-        display: flex;
-        flex-direction: column;
-      }
-      main {
-        flex: 1;
-        width: 100%;
-        max-width: 880px;
-        margin: 0 auto;
-        padding: 48px 24px 32px;
-      }
-      .hero {
-        display: flex;
-        align-items: center;
-        gap: 32px;
-      }
-      .hero-text {
-        flex: 1;
-        min-width: 0;
-      }
-      .logo {
-        width: min(300px, 70vw);
-        height: auto;
-        display: block;
-        margin-bottom: 20px;
-      }
-      h1 {
-        margin: 0 0 10px;
-        font-size: clamp(26px, 4.5vw, 38px);
-        font-weight: 700;
-        line-height: 1.2;
-      }
-      .lead {
-        margin: 0 0 8px;
-        font-size: clamp(17px, 2.4vw, 20px);
-        color: var(--card);
-      }
-      .lead-en {
-        margin: 0 0 26px;
-        font-size: 15px;
-        color: var(--blue-light);
-      }
-      .badges {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-bottom: 30px;
-      }
-      .badge {
-        border: 1.5px solid var(--blue-light);
-        border-radius: 999px;
-        padding: 9px 20px;
-        font-size: 15px;
-        font-weight: 500;
-        color: var(--card);
-        white-space: nowrap;
-      }
-      .badge small {
-        color: var(--blue-light);
-        font-weight: 500;
-      }
-      .links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 14px;
-      }
-      .links a {
-        background: var(--card);
-        color: var(--navy-deep);
-        text-decoration: none;
-        font-weight: 700;
-        font-size: 16px;
-        padding: 13px 24px;
-        border-radius: 14px;
-        transition: transform 0.12s ease;
-      }
-      .links a:hover {
-        transform: translateY(-2px);
-      }
-      .hero-figure {
-        flex: 0 0 auto;
-        width: min(230px, 32vw);
-      }
-      .hero-figure img {
-        width: 100%;
-        height: auto;
-        display: block;
-        filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.35));
-      }
-      footer {
-        border-top: 1px solid rgba(151, 173, 228, 0.35);
-        padding: 22px 24px 30px;
-        text-align: center;
-        font-size: 13px;
-        color: var(--blue-light);
-      }
-      footer nav {
-        margin-bottom: 8px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 6px 18px;
-      }
-      footer a {
-        color: var(--card);
-        text-decoration: none;
-      }
-      footer a:hover {
-        text-decoration: underline;
-      }
-      @media (max-width: 620px) {
-        .hero {
-          flex-direction: column-reverse;
-          text-align: center;
-        }
-        .logo {
-          margin-inline: auto;
-        }
-        .badges,
-        .links {
-          justify-content: center;
-        }
-        .hero-figure {
-          width: 150px;
-        }
-      }
-    </style>
+    </script>
   </head>
   <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="/" aria-label="TinyMinds Quiz kezdőlap">
+          <img src="/assets/logo.png" alt="TinyMinds" />
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          Menü
+        </button>
+        <nav class="site-nav" id="site-nav" aria-label="Fő navigáció">
+          <a href="#hogyan">Hogyan működik</a>
+          <a href="#hosok">Hősök</a>
+          <a href="#modok">Játékmódok</a>
+          <a href="#gyik">GYIK</a>
+          <a href="/support">Támogatás</a>
+          <a class="lang-switch" href="/en" lang="en" hreflang="en" title="Read this page in English">
+            🇬🇧 English
+          </a>
+          <a class="btn btn-primary" href="#letoltes">Letöltés</a>
+        </nav>
+      </div>
+    </header>
+
     <main>
-      <div class="hero">
-        <div class="hero-text">
-          <img class="logo" src="/assets/logo.png" alt="Tiny Minds" />
-          <h1>Tanulj a hősökkel!</h1>
-          <p class="lead">
-            Kvízjáték gyerekeknek — 8 témakör, 8 hős és ezernyi izgalmas kérdés.
-            Válaszolj helyesen, és a hőseid veled együtt fejlődnek!
-          </p>
-          <p class="lead-en">
-            A playful quiz game for kids — 8 topics, 8 heroes, thousands of
-            questions.
-          </p>
-          <div class="badges">
-            <span class="badge">App Store · <small>hamarosan</small></span>
-            <span class="badge">Google Play · <small>hamarosan</small></span>
+      <!-- Hero -->
+      <section class="hero">
+        <div class="container split">
+          <div>
+            <span class="eyebrow">Ingyenes kvízjáték iPhone-ra és Androidra</span>
+            <h1 class="display">Teszteld a tudásod!</h1>
+            <p class="lead">
+              Találd meg a kedvenc témaköröd, és érj el minél magasabb szintekre! Válaszolj
+              helyesen a kérdésekre, és a hőseid veled együtt fejlődnek. Tanulj minden nap
+              valami újat – nyolc hős és megannyi izgalmas kérdés vár rád. Ez a TinyMinds!
+            </p>
+            <div class="store-badges">
+              <a
+                class="store-badge"
+                href="https://apps.apple.com/hu/app/id6779207580"
+                aria-label="Letöltés az App Store-ból"
+              >
+                <img src="/assets/badge-app-store-hu.svg" alt="Letöltés az App Store-ból" />
+              </a>
+              <a
+                class="store-badge"
+                href="https://play.google.com/store/apps/details?id=hu.tinyminds.app"
+                aria-label="Letöltés a Google Play áruházból"
+              >
+                <img src="/assets/badge-google-play-en.png" alt="Letöltés a Google Play áruházból" />
+              </a>
+            </div>
+            <div class="hero-facts">
+              <span class="pill pill-green">Ingyenes</span>
+              <span class="pill">★ 5,0 az App Store-ban</span>
+              <span class="pill">Korhatár 4+ · PEGI 3</span>
+              <span class="pill">Magyarul és angolul</span>
+            </div>
           </div>
-          <div class="links">
-            <a href="/support">💬 Támogatás / Support</a>
-            <a href="/legal">📄 Jogi dokumentumok / Legal</a>
+          <div class="split-art">
+            <img
+              src="/assets/illustrations/heroes-celebrate.webp"
+              alt="Lord Hopps, Luna, Cinnamon és Roxie egy aranykupa körül ünnepel"
+              width="1000"
+              height="744"
+              fetchpriority="high"
+            />
           </div>
         </div>
-        <div class="hero-figure">
-          <img src="/assets/lord-hopps.png" alt="Lord Hopps, a történelem hőse" />
+      </section>
+
+      <!-- Stats -->
+      <section class="stats" aria-label="A játék számokban">
+        <div class="container">
+          <div class="stats-grid">
+            <div class="stat"><strong>8</strong><span>témakör</span></div>
+            <div class="stat"><strong>8+1</strong><span>hős</span></div>
+            <div class="stat"><strong>3</strong><span>nehézségi szint</span></div>
+            <div class="stat"><strong>1000+</strong><span>kérdés</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How it works -->
+      <section id="hogyan">
+        <div class="container">
+          <span class="eyebrow">Hogyan működik</span>
+          <h2 class="heading">Rövid kvízek, izgalmas kihívások</h2>
+          <p class="lead">
+            Egy játék tíz kérdésből áll – pont belefér egy buszútba vagy egy kávészünetbe.
+            Válassz témakört és hőst, válaszolj, gyűjtsd az aranyat meg a csillagokat, és lépj
+            szintet!
+          </p>
+          <div class="steps">
+            <article class="step">
+              <img
+                src="/assets/illustrations/step-pick-topic.webp"
+                alt="Cinnamon egy nyolc könyvből álló kupacra mutat"
+                loading="lazy"
+              />
+              <span class="step-number">1</span>
+              <h3 class="subheading">Válassz témakört és hőst</h3>
+              <p>
+                Történelem, földrajz, irodalom, élővilág, tudomány, művészet, szórakozás vagy
+                sport – mindegyikhez saját hős tartozik, akit te fejlesztesz.
+              </p>
+            </article>
+            <article class="step">
+              <img
+                src="/assets/illustrations/step-answer.webp"
+                alt="Luna egy telefont mutat, amelyen a helyes válasz zölden világít"
+                loading="lazy"
+              />
+              <span class="step-number">2</span>
+              <h3 class="subheading">Válaszolj a kérdésekre</h3>
+              <p>
+                Tíz kérdés, négy válaszlehetőség, ketyegő óra. Ha elakadsz, jönnek a segítők:
+                a felező, a fagyasztó, a pajzs vagy a témacsere.
+              </p>
+            </article>
+            <article class="step">
+              <img
+                src="/assets/illustrations/step-level-up.webp"
+                alt="Roxie ugrik egy aranycsillaggal, mellette felfelé mutató zöld nyíl"
+                loading="lazy"
+              />
+              <span class="step-number">3</span>
+              <h3 class="subheading">Fejleszd a hőseidet</h3>
+              <p>
+                Minden helyes válaszért arany, csillag és XP jár. A csillagokból szintet lépnek a
+                hőseid, a magasabb szint pedig nehezebb kérdéseket és nagyobb jutalmat hoz.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Heroes -->
+      <section id="hosok">
+        <div class="container">
+          <span class="eyebrow">A hősök</span>
+          <h2 class="heading">Nyolc hős, nyolc témakör</h2>
+          <p class="lead">
+            Minden hős egy-egy tudományterület szakértője. Mindegyiknek saját élete, szintje és
+            csillagai vannak – a hősök szobájában egy pillantással látod, ki hogy áll.
+          </p>
+          <div class="hero-grid">
+            <article class="hero-card" style="--hero-color: #374267">
+              <img src="/assets/heroes/lord-hopps-portrait.png" alt="Lord Hopps, a nyúl" loading="lazy" />
+              <strong>Lord Hopps</strong>
+              <span>Történelem</span>
+            </article>
+            <article class="hero-card" style="--hero-color: #e2632c">
+              <img src="/assets/heroes/cinnamon-portrait.png" alt="Cinnamon, a vörös panda" loading="lazy" />
+              <strong>Cinnamon</strong>
+              <span>Földrajz</span>
+            </article>
+            <article class="hero-card" style="--hero-color: #3e9eb5">
+              <img src="/assets/heroes/hamlet-portrait.png" alt="Hamlet, a kecske" loading="lazy" />
+              <strong>Hamlet</strong>
+              <span>Irodalom</span>
+            </article>
+            <article class="hero-card" style="--hero-color: #5da63a">
+              <img src="/assets/heroes/kiwi-portrait.png" alt="Kiwi, a kivimadár" loading="lazy" />
+              <strong>Kiwi</strong>
+              <span>Élővilág</span>
+            </article>
+            <article class="hero-card" style="--hero-color: #8b6da0">
+              <img src="/assets/heroes/luna-portrait.png" alt="Luna, a panda" loading="lazy" />
+              <strong>Luna</strong>
+              <span>Szórakozás</span>
+            </article>
+            <article class="hero-card" style="--hero-color: #a8221e">
+              <img src="/assets/heroes/roxie-portrait.png" alt="Roxie, a tigris" loading="lazy" />
+              <strong>Roxie</strong>
+              <span>Sport</span>
+            </article>
+            <article class="hero-card" style="--hero-color: #50765a">
+              <img src="/assets/heroes/nevada-portrait.png" alt="Nevada, a pingvin" loading="lazy" />
+              <strong>Nevada</strong>
+              <span>Művészet</span>
+            </article>
+            <article class="hero-card" style="--hero-color: #e6b12c">
+              <img src="/assets/heroes/malmo-portrait.png" alt="Malmö, a zsiráf" loading="lazy" />
+              <strong>Malmö</strong>
+              <span>Tudomány</span>
+            </article>
+          </div>
+          <div class="hero-grid hero-grid-single">
+            <article class="hero-card bonus" style="--hero-color: #5b2a8c">
+              <img src="/assets/heroes/mormota-portrait.png" alt="Mormota, a bónusz hős" loading="lazy" />
+              <strong>+1 Mormota</strong>
+              <span>Bónusz hős</span>
+              <p class="hero-card-note">
+                A kilencedik hőst aranyért nyithatod meg. Naponta gyémántot termel neked, a
+                gyémántokból pedig a bolt legértékesebb csomagjait veheted meg.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Game modes -->
+      <section id="modok">
+        <div class="container">
+          <span class="eyebrow">Játékmódok</span>
+          <h2 class="heading">Minden nap van miért visszatérni</h2>
+          <p class="lead">
+            A kvíz csak a kezdet. Napi és heti célok, szűkebb témájú mini küldetések és
+            ranglisták tartják mozgásban a játékot.
+          </p>
+          <div class="modes">
+            <article class="mode">
+              <img
+                src="/assets/illustrations/mode-daily-challenges.webp"
+                alt="Kiwi egy naptár mellett, amelyen zöld pipák és egy aranycsillag látható"
+                loading="lazy"
+              />
+              <div>
+                <h3 class="subheading">Napi kihívások</h3>
+                <p>
+                  Minden nap új feladatok várnak: játssz le néhány kört, válaszolj helyesen egy
+                  adott témában, gyűjts csillagokat. Ha teljesíted őket, extra arany üti a
+                  markodat.
+                </p>
+              </div>
+            </article>
+            <article class="mode">
+              <img
+                src="/assets/illustrations/mode-mini-quests.webp"
+                alt="Malmö egy jeggyel és egy kincses térképpel"
+                loading="lazy"
+              />
+              <div>
+                <h3 class="subheading">Mini küldetések</h3>
+                <p>
+                  Szűkebb, izgalmas témák – például a második világháború, a csillagászat, a
+                  Forma–1 vagy a reneszánsz művészet. Jegyekkel indíthatod őket, és külön
+                  ranglistán mérheted össze a tudásod másokéval.
+                </p>
+              </div>
+            </article>
+            <article class="mode">
+              <img
+                src="/assets/illustrations/mode-leaderboard.webp"
+                alt="Lord Hopps, Luna és Cinnamon egy dobogón, mögöttük iskolaépület"
+                loading="lazy"
+              />
+              <div>
+                <h3 class="subheading">Ranglisták és iskolák</h3>
+                <p>
+                  Heti XP-ranglista a játékosok között, és külön ranglista az iskoláknak: add
+                  meg, hova jársz, és minden helyes válaszoddal az iskolád eredményét is
+                  növeled. Game Center és Google Play Játékok támogatással.
+                </p>
+              </div>
+            </article>
+            <article class="mode">
+              <img
+                src="/assets/illustrations/mode-weekly-rewards.webp"
+                alt="Lord Hopps ajándékdobozokat cipel, a felsőből aranyérem és érmék esnek ki"
+                loading="lazy"
+              />
+              <div>
+                <h3 class="subheading">Heti jutalmak</h3>
+                <p>
+                  Minél több helyes választ adsz a héten, annál több jutalmat nyitsz meg a heti
+                  ranglétrán: aranyat, gyémántot, segítőket és főnixet, amellyel a kimerült
+                  hősödet feltámaszthatod.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- For everyone -->
+      <section>
+        <div class="container split reverse">
+          <div>
+            <span class="eyebrow">Kinek szól</span>
+            <h2 class="heading">Nem csak gyerekeknek</h2>
+            <p class="lead">
+              A TinyMinds mindenkié, aki szeret tudásban versenyezni: a diákoknak, akik játszva
+              ismételnek, a felnőtteknek, akik szeretik a kvízestek hangulatát, és a
+              nagyszülőknek, akik szívesen megmutatnák, mennyit tudnak. A három nehézségi szint
+              gondoskodik róla, hogy senkinek se legyen túl könnyű – vagy túl nehéz.
+            </p>
+            <div class="tag-row">
+              <span class="pill">Magyarul és angolul</span>
+              <span class="pill">iPhone · iPad · Android</span>
+              <span class="pill">Regisztráció nélkül</span>
+            </div>
+          </div>
+          <div class="split-art">
+            <img
+              src="/assets/illustrations/for-everyone.webp"
+              alt="Egy tinédzser, egy fiatal nő és egy nagypapa kvízezik a telefonján, mellettük Lord Hopps"
+              loading="lazy"
+              width="1000"
+              height="720"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Shop & support -->
+      <section id="bolt">
+        <div class="container split">
+          <div>
+            <span class="eyebrow">Bolt és támogatói csomagok</span>
+            <h2 class="heading">Ingyenes – és az is marad</h2>
+            <p class="lead">
+              A TinyMinds ingyenesen letölthető és játszható; az alkalmazás hirdetéseket
+              tartalmaz. Aranyat és segítőket játékkal is gyűjthetsz. Aki gyorsabban haladna,
+              vagy támogatná a fejlesztést, a boltban egyszeri csomagokat és havi Támogatói
+              előfizetést talál.
+            </p>
+            <ul class="plan-list">
+              <li>
+                <strong>Havi Támogató – Basic</strong>
+                <span>Havonta 50 jegy, 20 főnix és 30 000 arany.</span>
+              </li>
+              <li>
+                <strong>Havi Támogató – Extra</strong>
+                <span>Korlátlan jegy, továbbá havonta 40 főnix és 60 000 arany.</span>
+              </li>
+            </ul>
+            <p class="fine-print">
+              Az előfizetés 1 hónapra szól, és automatikusan megújul, amíg az aktuális időszak
+              vége előtt legalább 24 órával le nem mondod az App Store, illetve a Google Play
+              beállításaiban. Részletek:
+              <a href="/hu/aszf">ÁSZF</a> ·
+              <a href="/hu/adatkezelesi-tajekoztato">Adatkezelési tájékoztató</a>
+            </p>
+          </div>
+          <div class="split-art">
+            <img
+              src="/assets/illustrations/shop-chest.webp"
+              alt="Aranyérmékkel és gyémántokkal teli kincsesláda, tetején egy főnix, mellette a segítők ikonjai"
+              loading="lazy"
+              width="890"
+              height="979"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Download band -->
+      <section class="download-band" id="letoltes">
+        <div class="container">
+          <h2 class="heading">Töltsd le, és kezdj játszani!</h2>
+          <p>
+            Elérhető iPhone-ra, iPadre és Android telefonokra. Nem kell regisztrálni: telepítés
+            után azonnal indulhat az első kvíz.
+          </p>
+          <div class="store-badges">
+            <a
+              class="store-badge"
+              href="https://apps.apple.com/hu/app/id6779207580"
+              aria-label="Letöltés az App Store-ból"
+            >
+              <img src="/assets/badge-app-store-hu.svg" alt="Letöltés az App Store-ból" />
+            </a>
+            <a
+              class="store-badge"
+              href="https://play.google.com/store/apps/details?id=hu.tinyminds.app"
+              aria-label="Letöltés a Google Play áruházból"
+            >
+              <img src="/assets/badge-google-play-en.png" alt="Letöltés a Google Play áruházból" />
+            </a>
+          </div>
+          <div class="hero-facts">
+            <span class="pill">iOS 15.1 vagy újabb</span>
+            <span class="pill">Android telefon és tablet</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="gyik">
+        <div class="container">
+          <span class="eyebrow">Gyakori kérdések</span>
+          <h2 class="heading heading-dark">Amit tudni érdemes</h2>
+          <div class="faq">
+            <details>
+              <summary>Tényleg ingyenes a játék?</summary>
+              <p>
+                Igen. A TinyMinds ingyenesen letölthető, és a teljes játék végigjátszható
+                vásárlás nélkül. Az alkalmazás hirdetéseket tartalmaz, és ha önként megnézel egy
+                jutalmazott videót, extra aranyat, jegyet vagy főnixet kapsz. A támogatói
+                csomagok és előfizetések választhatók, nem kötelezőek.
+              </p>
+            </details>
+            <details>
+              <summary>Milyen korosztálynak való?</summary>
+              <p>
+                Mindenkinek. Az áruházi besorolás 4+ (App Store), illetve PEGI 3 (Google Play), a
+                kérdések pedig három nehézségi szinten érkeznek, így a kisiskolástól a
+                nagyszülőig mindenki megtalálja a neki valót.
+              </p>
+            </details>
+            <details>
+              <summary>Kell regisztrálni?</summary>
+              <p>
+                Nem. Az első indításkor csak egy játékosnevet és – ha szeretnéd – egy iskolát
+                adsz meg. A haladásod az eszközödhöz, illetve a Game Center vagy Google Play
+                Játékok fiókodhoz kötve marad meg, így újratelepítés után is visszatölthető.
+              </p>
+            </details>
+            <details>
+              <summary>Milyen nyelveken játszható?</summary>
+              <p>
+                Magyarul és angolul. A nyelvet az első indításkor választod ki, és a
+                beállításokban bármikor átválthatod – a kérdések mindkét nyelven elérhetők.
+              </p>
+            </details>
+            <details>
+              <summary>Hogyan állítom vissza a vásárlásaimat, vagy törlöm a fiókomat?</summary>
+              <p>
+                Mindkettőt az alkalmazásban, a Beállítások képernyőn találod: „Vásárlások
+                visszaállítása”, illetve „Fiók törlése”. A fiók törlésével minden hozzá tartozó
+                adat végleg törlődik. További segítséget a
+                <a href="/support">támogatás oldalon</a> találsz.
+              </p>
+            </details>
+            <details>
+              <summary>Hibát találtam, vagy kérdésem van. Hova írhatok?</summary>
+              <p>
+                Írj nekünk a
+                <a href="mailto:tinymindsquiz@gmail.com">tinymindsquiz@gmail.com</a> címre, és
+                igyekszünk mielőbb válaszolni.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <img src="/assets/logo.png" alt="TinyMinds" />
+            <p>
+              TinyMinds Quiz – kvízjáték mindenkinek. Nyolc témakör, nyolc hős, több ezer kérdés
+              magyarul és angolul.
+            </p>
+            <p>
+              Szolgáltató: Baráth Csaba egyéni vállalkozó · Dorog, Hegyalja utca 1. ·
+              <a href="mailto:tinymindsquiz@gmail.com">tinymindsquiz@gmail.com</a>
+            </p>
+          </div>
+          <div>
+            <h4>Letöltés</h4>
+            <ul>
+              <li><a href="https://apps.apple.com/hu/app/id6779207580">App Store</a></li>
+              <li>
+                <a href="https://play.google.com/store/apps/details?id=hu.tinyminds.app">Google Play</a>
+              </li>
+              <li><a href="/support">Támogatás</a></li>
+              <li><a href="/en" lang="en" hreflang="en">This page in English</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Jogi dokumentumok</h4>
+            <ul>
+              <li><a href="/hu/aszf">ÁSZF</a></li>
+              <li><a href="/hu/adatkezelesi-tajekoztato">Adatkezelési tájékoztató</a></li>
+              <li><a href="/en/terms-and-conditions" lang="en">Terms and Conditions</a></li>
+              <li><a href="/en/privacy-policy" lang="en">Privacy Policy</a></li>
+              <li><a href="/legal">Minden dokumentum</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          © <span id="year">2026</span> TinyMinds · Az Apple, az App Store és az Apple logó az
+          Apple Inc. védjegyei. A Google Play és a Google Play logó a Google LLC védjegyei.
         </div>
       </div>
-    </main>
-    <footer>
-      <nav>
-        <a href="/hu/aszf">ÁSZF</a>
-        <a href="/hu/adatkezelesi-tajekoztato">Adatkezelési tájékoztató</a>
-        <a href="/en/terms-and-conditions">Terms</a>
-        <a href="/en/privacy-policy">Privacy Policy</a>
-      </nav>
-      Tiny Minds — Baráth Csaba egyéni vállalkozó · Dorog, Hegyalja utca 1. ·
-      <a href="mailto:tinymindsquiz@gmail.com">tinymindsquiz@gmail.com</a>
     </footer>
+
+    <script src="/assets/site.js"></script>
   </body>
 </html>
