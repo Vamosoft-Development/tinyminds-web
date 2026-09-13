@@ -43,6 +43,13 @@ When a new document version arrives:
 
 ## Landing page assets
 
+The landing uses the app's own brand: colours from
+`apps/mobile/lib/theme/colors.ts` (navy `#344580`, blue `#6189CE`, light blue
+`#97ADE4`, card `#E4EAFF`, ink `#253156`, green `#4CAF50`) and the app's fonts,
+self-hosted as woff2 in `assets/fonts/` (Pally by Indian Type Foundry via
+Fontshare, Objectivity by Alexander Slobzheninov — the same files the app
+bundles). Tokens live at the top of `assets/site.css`.
+
 `assets/heroes/` (hero portraits + standing art) and `assets/icons/` are copies of
 the mobile app's bundled assets — re-copy from the monorepo when the art changes.
 `assets/illustrations/*.webp` are flat storybook-style scene illustrations
