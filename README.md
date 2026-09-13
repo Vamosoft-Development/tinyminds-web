@@ -13,7 +13,8 @@ automatically**. No build step; `vercel.json` enables `cleanUrls`, so
 
 | Path | Page |
 | --- | --- |
-| `/` | Landing page (`index.html`, hand-written, HU with an EN summary) |
+| `/` | Landing page, Hungarian (`index.html`, hand-written) |
+| `/en` | Landing page, English (`en/index.html`, hand-written; shares `assets/site.css` + `assets/site.js`) |
 | `/support` | Support / contact (`support.html`, hand-written, bilingual) |
 | `/legal` | Document index (`legal.html`, hand-written) |
 | `/hu/aszf` · `/hu/adatkezelesi-tajekoztato` | Hungarian legal documents (generated) |
@@ -50,4 +51,5 @@ in the same style if a new section needs one. `assets/og.png` is the social
 preview card. Store badges come from Apple's and Google's official badge
 services; the copy on the landing page mirrors the live App Store / Google Play
 listings (name, subtitle, description, subscription terms, age rating) — update
-both when the listing changes.
+both when the listing changes. The Hungarian and English landing pages are
+written separately — keep their sections in sync when one of them changes.

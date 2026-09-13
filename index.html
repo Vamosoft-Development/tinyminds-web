@@ -9,6 +9,9 @@
       content="TinyMinds Quiz: ingyenes kvízjáték mindenkinek. 8 témakör, 8 hős, több ezer kérdés, napi kihívások, mini küldetések és ranglisták. Töltsd le az App Store-ból vagy a Google Play-ről!"
     />
     <link rel="canonical" href="https://tinyminds.hu/" />
+    <link rel="alternate" hreflang="hu" href="https://tinyminds.hu/" />
+    <link rel="alternate" hreflang="en" href="https://tinyminds.hu/en" />
+    <link rel="alternate" hreflang="x-default" href="https://tinyminds.hu/" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="TinyMinds Quiz — Teszteld a tudásod!" />
     <meta
@@ -18,6 +21,7 @@
     <meta property="og:image" content="https://tinyminds.hu/assets/og.png" />
     <meta property="og:url" content="https://tinyminds.hu/" />
     <meta property="og:locale" content="hu_HU" />
+    <meta property="og:locale:alternate" content="en_US" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="apple-itunes-app" content="app-id=6779207580" />
     <link rel="icon" type="image/png" href="/assets/hopps.png" />
@@ -28,6 +32,7 @@
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&family=Nunito+Sans:wght@500;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="/assets/site.css" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -46,647 +51,6 @@
         "author": { "@type": "Person", "name": "Baráth Csaba" }
       }
     </script>
-    <style>
-      :root {
-        --color-eager-green: #58cc02;
-        --color-storybook-green: #d7ffb8;
-        --color-spark-blue: #1cb0f6;
-        --color-fresh-leaf: #a5ed6e;
-        --color-night-ink: #000437;
-        --color-paper-white: #ffffff;
-        --color-charcoal: #4b4b4b;
-        --color-pencil-gray: #777777;
-        --color-faded-gray: #afafaf;
-        --color-line: #e5e5e5;
-
-        --font-display: 'Nunito', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-        --font-sans: 'Nunito Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-
-        --text-caption: 13px;
-        --text-nav-label: 15px;
-        --text-body: 17px;
-        --text-subheading: 19px;
-        --text-heading-sm: 32px;
-        --text-heading: 48px;
-        --text-display: 64px;
-
-        --radius: 12px;
-        --page-max-width: 1200px;
-        --section-gap: 96px;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        margin: 0;
-        background: var(--color-paper-white);
-        color: var(--color-charcoal);
-        font-family: var(--font-sans);
-        font-size: var(--text-body);
-        font-weight: 500;
-        line-height: 1.4;
-        -webkit-font-smoothing: antialiased;
-      }
-      img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-      }
-      a {
-        color: var(--color-spark-blue);
-        text-decoration: none;
-        font-weight: 700;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-      p {
-        margin: 0 0 16px;
-        color: var(--color-pencil-gray);
-      }
-      .container {
-        width: 100%;
-        max-width: var(--page-max-width);
-        margin: 0 auto;
-        padding-inline: 24px;
-      }
-
-      /* ---------- Typography ---------- */
-      .display {
-        font-family: var(--font-display);
-        font-weight: 900;
-        font-size: clamp(40px, 6vw, var(--text-display));
-        line-height: 1.1;
-        letter-spacing: -0.02em;
-        color: var(--color-eager-green);
-        margin: 0 0 16px;
-      }
-      .heading {
-        font-family: var(--font-display);
-        font-weight: 900;
-        font-size: clamp(34px, 4.5vw, var(--text-heading));
-        line-height: 1.2;
-        letter-spacing: -0.02em;
-        color: var(--color-eager-green);
-        margin: 0 0 16px;
-      }
-      .heading-dark {
-        color: var(--color-charcoal);
-      }
-      .subheading {
-        font-size: var(--text-subheading);
-        font-weight: 700;
-        line-height: 1.4;
-        color: var(--color-charcoal);
-        margin: 0 0 8px;
-      }
-      .eyebrow {
-        display: inline-block;
-        font-size: var(--text-nav-label);
-        font-weight: 700;
-        letter-spacing: 0.053em;
-        text-transform: uppercase;
-        color: var(--color-spark-blue);
-        margin-bottom: 12px;
-      }
-      .lead {
-        font-size: var(--text-subheading);
-        line-height: 1.4;
-        max-width: 520px;
-      }
-
-      /* ---------- Buttons & pills ---------- */
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        border-radius: var(--radius);
-        padding: 14px 20px;
-        font-family: var(--font-sans);
-        font-size: var(--text-nav-label);
-        font-weight: 700;
-        letter-spacing: 0.053em;
-        text-transform: uppercase;
-        text-decoration: none;
-        border: 2px solid transparent;
-        cursor: pointer;
-        white-space: nowrap;
-        transition: filter 0.12s ease, background-color 0.12s ease;
-      }
-      .btn:hover {
-        text-decoration: none;
-        filter: brightness(1.05);
-      }
-      .btn-primary {
-        background: var(--color-eager-green);
-        color: var(--color-paper-white);
-      }
-      .btn-outline {
-        background: transparent;
-        color: var(--color-spark-blue);
-        border-color: var(--color-faded-gray);
-      }
-      .btn-outline:hover {
-        background: #f7f7f7;
-      }
-      .pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        border: 2px solid var(--color-faded-gray);
-        border-radius: var(--radius);
-        padding: 8px 14px;
-        font-size: var(--text-nav-label);
-        font-weight: 700;
-        letter-spacing: 0.053em;
-        text-transform: uppercase;
-        color: var(--color-pencil-gray);
-        line-height: 1.33;
-        white-space: nowrap;
-      }
-      .pill img {
-        width: 20px;
-        height: 20px;
-      }
-      .pill-green {
-        border-color: var(--color-eager-green);
-        color: var(--color-eager-green);
-        background: var(--color-storybook-green);
-      }
-
-      /* ---------- Header ---------- */
-      .site-header {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        background: var(--color-paper-white);
-        border-bottom: 2px solid var(--color-line);
-      }
-      .site-header .container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        min-height: 72px;
-      }
-      .brand img {
-        height: 44px;
-        width: auto;
-      }
-      .site-nav {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-      }
-      .site-nav a {
-        padding: 10px 14px;
-        border-radius: var(--radius);
-        font-size: var(--text-nav-label);
-        font-weight: 700;
-        letter-spacing: 0.053em;
-        text-transform: uppercase;
-        color: var(--color-pencil-gray);
-      }
-      .site-nav a:hover {
-        text-decoration: none;
-        background: #f2f2f2;
-        color: var(--color-charcoal);
-      }
-      .site-nav .btn {
-        margin-left: 8px;
-        padding-block: 10px;
-      }
-      .nav-toggle {
-        display: none;
-        border: 2px solid var(--color-faded-gray);
-        border-radius: var(--radius);
-        background: transparent;
-        padding: 8px 12px;
-        font: inherit;
-        font-weight: 700;
-        color: var(--color-pencil-gray);
-        cursor: pointer;
-      }
-
-      /* ---------- Sections ---------- */
-      section {
-        padding-block: var(--section-gap);
-      }
-      .split {
-        display: grid;
-        grid-template-columns: 1.1fr 1fr;
-        align-items: center;
-        gap: 48px;
-      }
-      .split.reverse > .split-art {
-        order: -1;
-      }
-      .split-art img {
-        width: 100%;
-        max-width: 560px;
-        margin-inline: auto;
-      }
-
-      /* Hero */
-      .hero {
-        padding-block: 64px 80px;
-      }
-      .hero .display {
-        max-width: 620px;
-      }
-      .hero-cta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin: 24px 0 20px;
-      }
-      .store-badges {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 12px;
-      }
-      .store-badges img {
-        height: 56px;
-        width: auto;
-      }
-      .hero-facts {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-top: 24px;
-      }
-
-      /* Stats strip */
-      .stats {
-        padding-block: 0 var(--section-gap);
-      }
-      .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 12px;
-      }
-      .stat {
-        border: 2px solid var(--color-line);
-        border-radius: var(--radius);
-        padding: 20px;
-        text-align: center;
-      }
-      .stat strong {
-        display: block;
-        font-family: var(--font-display);
-        font-weight: 900;
-        font-size: 40px;
-        line-height: 1.1;
-        color: var(--color-eager-green);
-      }
-      .stat span {
-        font-size: var(--text-nav-label);
-        font-weight: 700;
-        letter-spacing: 0.053em;
-        text-transform: uppercase;
-        color: var(--color-pencil-gray);
-      }
-
-      /* Steps */
-      .steps {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-        margin-top: 40px;
-      }
-      .step {
-        border: 2px solid var(--color-line);
-        border-radius: var(--radius);
-        padding: 24px;
-      }
-      .step img {
-        width: 100%;
-        max-width: 260px;
-        margin: 0 auto 16px;
-      }
-      .step-number {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        background: var(--color-eager-green);
-        color: var(--color-paper-white);
-        font-family: var(--font-display);
-        font-weight: 900;
-        font-size: 18px;
-        margin-bottom: 12px;
-      }
-
-      /* Heroes */
-      .hero-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 16px;
-        margin-top: 40px;
-      }
-      .hero-card {
-        border: 2px solid var(--color-line);
-        border-radius: var(--radius);
-        padding: 20px 16px;
-        text-align: center;
-      }
-      .hero-card img {
-        width: 112px;
-        height: 112px;
-        border-radius: 50%;
-        border: 4px solid var(--hero-color, var(--color-faded-gray));
-        margin: 0 auto 12px;
-      }
-      .hero-card strong {
-        display: block;
-        font-family: var(--font-display);
-        font-weight: 900;
-        font-size: 22px;
-        color: var(--color-charcoal);
-      }
-      .hero-card span {
-        display: inline-block;
-        margin-top: 6px;
-        padding: 4px 10px;
-        border-radius: var(--radius);
-        border: 2px solid var(--hero-color, var(--color-faded-gray));
-        color: var(--hero-color, var(--color-pencil-gray));
-        font-size: var(--text-caption);
-        font-weight: 700;
-        letter-spacing: 0.053em;
-        text-transform: uppercase;
-        line-height: 1.4;
-      }
-      .hero-card.bonus {
-        border-style: dashed;
-      }
-
-      /* Modes */
-      .modes {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
-        margin-top: 40px;
-      }
-      .mode {
-        display: grid;
-        grid-template-columns: 160px 1fr;
-        gap: 20px;
-        align-items: center;
-        border: 2px solid var(--color-line);
-        border-radius: var(--radius);
-        padding: 24px;
-      }
-      .mode img {
-        width: 160px;
-        height: 160px;
-        object-fit: contain;
-      }
-      .mode p {
-        margin-bottom: 0;
-      }
-      .tag-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-top: 16px;
-      }
-      .tag-row .pill {
-        padding: 6px 10px;
-        font-size: var(--text-caption);
-      }
-
-      /* Shop / support */
-      .plan-list {
-        list-style: none;
-        margin: 16px 0 0;
-        padding: 0;
-        display: grid;
-        gap: 12px;
-      }
-      .plan-list li {
-        border: 2px solid var(--color-line);
-        border-radius: var(--radius);
-        padding: 16px 20px;
-      }
-      .plan-list strong {
-        display: block;
-        color: var(--color-charcoal);
-        margin-bottom: 4px;
-      }
-      .plan-list span {
-        color: var(--color-pencil-gray);
-      }
-      .fine-print {
-        font-size: var(--text-caption);
-        line-height: 1.5;
-        margin-top: 16px;
-      }
-
-      /* Download band */
-      .download-band {
-        background: var(--color-eager-green);
-        color: var(--color-paper-white);
-        text-align: center;
-      }
-      .download-band .heading {
-        color: var(--color-paper-white);
-      }
-      .download-band p {
-        color: var(--color-storybook-green);
-        max-width: 560px;
-        margin-inline: auto;
-      }
-      .download-band .store-badges {
-        justify-content: center;
-        margin-top: 24px;
-      }
-      .download-band .pill {
-        border-color: var(--color-storybook-green);
-        color: var(--color-paper-white);
-      }
-      .download-band .hero-facts {
-        justify-content: center;
-      }
-
-      /* FAQ */
-      .faq {
-        max-width: 760px;
-        margin: 32px auto 0;
-      }
-      details {
-        border: 2px solid var(--color-line);
-        border-radius: var(--radius);
-        padding: 0 20px;
-        margin-bottom: 12px;
-      }
-      summary {
-        cursor: pointer;
-        list-style: none;
-        padding: 16px 0;
-        font-size: var(--text-subheading);
-        font-weight: 700;
-        color: var(--color-charcoal);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 16px;
-      }
-      summary::-webkit-details-marker {
-        display: none;
-      }
-      summary::after {
-        content: '+';
-        font-family: var(--font-display);
-        font-weight: 900;
-        font-size: 24px;
-        color: var(--color-eager-green);
-        flex: 0 0 auto;
-      }
-      details[open] summary::after {
-        content: '–';
-      }
-      details p {
-        margin: 0 0 16px;
-      }
-
-      /* English summary */
-      .english {
-        border-top: 2px solid var(--color-line);
-      }
-
-      /* Footer */
-      .site-footer {
-        background: var(--color-eager-green);
-        color: var(--color-paper-white);
-        padding-block: 48px;
-      }
-      .footer-grid {
-        display: grid;
-        grid-template-columns: 1.4fr 1fr 1fr;
-        gap: 32px;
-      }
-      .site-footer h4 {
-        margin: 0 0 12px;
-        font-size: var(--text-nav-label);
-        font-weight: 700;
-        letter-spacing: 0.053em;
-        text-transform: uppercase;
-        color: var(--color-paper-white);
-      }
-      .site-footer ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-      .site-footer li {
-        margin-bottom: 8px;
-      }
-      .site-footer a {
-        color: var(--color-fresh-leaf);
-        font-weight: 500;
-      }
-      .site-footer p {
-        color: var(--color-storybook-green);
-        font-size: var(--text-caption);
-        line-height: 1.5;
-      }
-      .footer-brand img {
-        height: 48px;
-        width: auto;
-        background: var(--color-paper-white);
-        border-radius: var(--radius);
-        padding: 8px 12px;
-        margin-bottom: 16px;
-      }
-      .footer-bottom {
-        margin-top: 32px;
-        padding-top: 16px;
-        border-top: 2px solid var(--color-fresh-leaf);
-        font-size: var(--text-caption);
-        color: var(--color-storybook-green);
-      }
-
-      /* ---------- Responsive ---------- */
-      @media (max-width: 960px) {
-        :root {
-          --section-gap: 72px;
-        }
-        .split,
-        .split.reverse {
-          grid-template-columns: 1fr;
-          gap: 32px;
-        }
-        .split.reverse > .split-art {
-          order: 0;
-        }
-        .split-art img {
-          max-width: 420px;
-        }
-        .stats-grid,
-        .hero-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .steps,
-        .modes {
-          grid-template-columns: 1fr;
-        }
-        .footer-grid {
-          grid-template-columns: 1fr;
-        }
-        .nav-toggle {
-          display: inline-block;
-        }
-        .site-nav {
-          display: none;
-          position: absolute;
-          left: 0;
-          right: 0;
-          top: 100%;
-          flex-direction: column;
-          align-items: stretch;
-          background: var(--color-paper-white);
-          border-bottom: 2px solid var(--color-line);
-          padding: 12px 24px 20px;
-        }
-        .site-nav.open {
-          display: flex;
-        }
-        .site-nav .btn {
-          margin: 8px 0 0;
-        }
-      }
-      @media (max-width: 560px) {
-        .stats-grid,
-        .hero-grid {
-          grid-template-columns: 1fr 1fr;
-        }
-        .mode {
-          grid-template-columns: 1fr;
-          text-align: center;
-        }
-        .mode img {
-          margin-inline: auto;
-        }
-        .tag-row {
-          justify-content: center;
-        }
-        .stat strong {
-          font-size: 32px;
-        }
-        .store-badges img {
-          height: 48px;
-        }
-      }
-    </style>
   </head>
   <body>
     <header class="site-header">
@@ -703,6 +67,9 @@
           <a href="#modok">Játékmódok</a>
           <a href="#gyik">GYIK</a>
           <a href="/support">Támogatás</a>
+          <a class="lang-switch" href="/en" lang="en" hreflang="en" title="Read this page in English">
+            🇬🇧 English
+          </a>
           <a class="btn btn-primary" href="#letoltes">Letöltés</a>
         </nav>
       </div>
@@ -713,29 +80,34 @@
       <section class="hero">
         <div class="container split">
           <div>
-            <span class="eyebrow">Ingyenes kvízjáték iOS-re és Androidra</span>
+            <span class="eyebrow">Ingyenes kvízjáték iPhone-ra és Androidra</span>
             <h1 class="display">Teszteld a tudásod!</h1>
             <p class="lead">
               Találd meg a kedvenc témaköröd, és érj el minél magasabb szintekre! Válaszolj
-              helyesen, és a hőseid veled együtt fejlődnek a játék során. Tanulj minden nap
-              valami újat – nyolc hős és megannyi izgalmas kérdés vár. Ez a TinyMinds!
+              helyesen a kérdésekre, és a hőseid veled együtt fejlődnek. Tanulj minden nap
+              valami újat – nyolc hős és megannyi izgalmas kérdés vár rád. Ez a TinyMinds!
             </p>
-            <div class="hero-cta">
-              <a class="btn btn-primary" href="https://apps.apple.com/hu/app/id6779207580">
-                Letöltés az App Store-ból
+            <div class="store-badges">
+              <a
+                class="store-badge"
+                href="https://apps.apple.com/hu/app/id6779207580"
+                aria-label="Letöltés az App Store-ból"
+              >
+                <img src="/assets/badge-app-store-hu.svg" alt="Letöltés az App Store-ból" />
               </a>
               <a
-                class="btn btn-outline"
+                class="store-badge"
                 href="https://play.google.com/store/apps/details?id=hu.tinyminds.app"
+                aria-label="Letöltés a Google Play áruházból"
               >
-                Letöltés a Google Play-ről
+                <img src="/assets/badge-google-play-en.png" alt="Letöltés a Google Play áruházból" />
               </a>
             </div>
             <div class="hero-facts">
               <span class="pill pill-green">Ingyenes</span>
               <span class="pill">★ 5,0 az App Store-ban</span>
               <span class="pill">Korhatár 4+ · PEGI 3</span>
-              <span class="pill">Magyar · English</span>
+              <span class="pill">Magyarul és angolul</span>
             </div>
           </div>
           <div class="split-art">
@@ -768,9 +140,9 @@
           <span class="eyebrow">Hogyan működik</span>
           <h2 class="heading">Rövid kvízek, izgalmas kihívások</h2>
           <p class="lead">
-            Egy játék tíz kérdés – pont annyi, amennyi belefér egy buszútba vagy egy
-            kávészünetbe. Válassz témakört és hőst, válaszolj, gyűjtsd az aranyat és a
-            csillagokat, és emeld szintet!
+            Egy játék tíz kérdésből áll – pont belefér egy buszútba vagy egy kávészünetbe.
+            Válassz témakört és hőst, válaszolj, gyűjtsd az aranyat meg a csillagokat, és lépj
+            szintet!
           </p>
           <div class="steps">
             <article class="step">
@@ -795,8 +167,8 @@
               <span class="step-number">2</span>
               <h3 class="subheading">Válaszolj a kérdésekre</h3>
               <p>
-                Tíz kérdés, négy lehetséges válasz, ketyegő óra. Ha elakadsz, segítők jönnek:
-                felező, fagyasztó, pajzs vagy témacsere.
+                Tíz kérdés, négy válaszlehetőség, ketyegő óra. Ha elakadsz, jönnek a segítők:
+                a felező, a fagyasztó, a pajzs vagy a témacsere.
               </p>
             </article>
             <article class="step">
@@ -808,7 +180,7 @@
               <span class="step-number">3</span>
               <h3 class="subheading">Fejleszd a hőseidet</h3>
               <p>
-                A helyes válaszokért arany, csillag és XP jár. A csillagokból szintet lépnek a
+                Minden helyes válaszért arany, csillag és XP jár. A csillagokból szintet lépnek a
                 hőseid, a magasabb szint pedig nehezebb kérdéseket és nagyobb jutalmat hoz.
               </p>
             </article>
@@ -823,7 +195,7 @@
           <h2 class="heading">Nyolc hős, nyolc témakör</h2>
           <p class="lead">
             Minden hős egy-egy tudományterület szakértője. Mindegyiknek saját élete, szintje és
-            csillagai vannak – a hősök szobájában látod, ki áll a legjobban.
+            csillagai vannak – a hősök szobájában egy pillantással látod, ki hogy áll.
           </p>
           <div class="hero-grid">
             <article class="hero-card" style="--hero-color: #374267">
@@ -867,14 +239,14 @@
               <span>Tudomány</span>
             </article>
           </div>
-          <div class="hero-grid" style="margin-top: 16px; grid-template-columns: 1fr">
+          <div class="hero-grid hero-grid-single">
             <article class="hero-card bonus" style="--hero-color: #5b2a8c">
               <img src="/assets/heroes/mormota-portrait.png" alt="Mormota, a bónusz hős" loading="lazy" />
               <strong>+1 Mormota</strong>
               <span>Bónusz hős</span>
-              <p style="margin: 12px auto 0; max-width: 520px">
-                A kilencedik hős aranyért nyitható meg, és naponta gyémántot termel neked – a
-                gyémántokból a bolt legértékesebb csomagjai vásárolhatók.
+              <p class="hero-card-note">
+                A kilencedik hőst aranyért nyithatod meg. Naponta gyémántot termel neked, a
+                gyémántokból pedig a bolt legértékesebb csomagjait veheted meg.
               </p>
             </article>
           </div>
@@ -887,8 +259,8 @@
           <span class="eyebrow">Játékmódok</span>
           <h2 class="heading">Minden nap van miért visszatérni</h2>
           <p class="lead">
-            A kvíz csak a kezdet. Napi és heti célok, saját témás mini küldetések és ranglisták
-            tartják mozgásban a játékot.
+            A kvíz csak a kezdet. Napi és heti célok, szűkebb témájú mini küldetések és
+            ranglisták tartják mozgásban a játékot.
           </p>
           <div class="modes">
             <article class="mode">
@@ -900,8 +272,9 @@
               <div>
                 <h3 class="subheading">Napi kihívások</h3>
                 <p>
-                  Minden nap új feladatok: játssz le néhány kört, válaszolj helyesen egy adott
-                  témában, gyűjts csillagot. Teljesítsd őket, és extra arany üti a markodat.
+                  Minden nap új feladatok várnak: játssz le néhány kört, válaszolj helyesen egy
+                  adott témában, gyűjts csillagokat. Ha teljesíted őket, extra arany üti a
+                  markodat.
                 </p>
               </div>
             </article>
@@ -914,9 +287,9 @@
               <div>
                 <h3 class="subheading">Mini küldetések</h3>
                 <p>
-                  Szűkebb, izgalmas témák – például második világháború, csillagászat, Forma–1
-                  vagy reneszánsz művészet. Jegyekkel indíthatod őket, és külön ranglistán mérheted
-                  össze a tudásod.
+                  Szűkebb, izgalmas témák – például a második világháború, a csillagászat, a
+                  Forma–1 vagy a reneszánsz művészet. Jegyekkel indíthatod őket, és külön
+                  ranglistán mérheted össze a tudásod másokéval.
                 </p>
               </div>
             </article>
@@ -929,9 +302,9 @@
               <div>
                 <h3 class="subheading">Ranglisták és iskolák</h3>
                 <p>
-                  Heti XP-ranglista a játékosok között, és külön iskolai ranglista: add meg az
-                  iskolád, és minden helyes válaszoddal az iskolád eredményét is növeled.
-                  Game Center és Google Play Játékok támogatással.
+                  Heti XP-ranglista a játékosok között, és külön ranglista az iskoláknak: add
+                  meg, hova jársz, és minden helyes válaszoddal az iskolád eredményét is
+                  növeled. Game Center és Google Play Játékok támogatással.
                 </p>
               </div>
             </article>
@@ -944,9 +317,9 @@
               <div>
                 <h3 class="subheading">Heti jutalmak</h3>
                 <p>
-                  Minél több helyes válasz a héten, annál több jutalmat nyitsz meg a heti
-                  ranglétrán: arany, gyémánt, segítők és főnix, amivel a kimerült hősödet
-                  feltámaszthatod.
+                  Minél több helyes választ adsz a héten, annál több jutalmat nyitsz meg a heti
+                  ranglétrán: aranyat, gyémántot, segítőket és főnixet, amellyel a kimerült
+                  hősödet feltámaszthatod.
                 </p>
               </div>
             </article>
@@ -961,15 +334,15 @@
             <span class="eyebrow">Kinek szól</span>
             <h2 class="heading">Nem csak gyerekeknek</h2>
             <p class="lead">
-              A TinyMinds mindenkié, aki szeret tudásban versenyezni: diákoknak, akik játszva
-              ismételnek, felnőtteknek, akik szeretik a kvízestek hangulatát, és nagyszülőknek,
-              akik megmutatnák, mennyit tudnak. Három nehézségi szint gondoskodik róla, hogy
-              senkinek se legyen túl könnyű – vagy túl nehéz.
+              A TinyMinds mindenkié, aki szeret tudásban versenyezni: a diákoknak, akik játszva
+              ismételnek, a felnőtteknek, akik szeretik a kvízestek hangulatát, és a
+              nagyszülőknek, akik szívesen megmutatnák, mennyit tudnak. A három nehézségi szint
+              gondoskodik róla, hogy senkinek se legyen túl könnyű – vagy túl nehéz.
             </p>
             <div class="tag-row">
-              <span class="pill">Magyar és angol nyelven</span>
+              <span class="pill">Magyarul és angolul</span>
               <span class="pill">iPhone · iPad · Android</span>
-              <span class="pill">Fiók nélkül indítható</span>
+              <span class="pill">Regisztráció nélkül</span>
             </div>
           </div>
           <div class="split-art">
@@ -991,8 +364,8 @@
             <span class="eyebrow">Bolt és támogatói csomagok</span>
             <h2 class="heading">Ingyenes – és az is marad</h2>
             <p class="lead">
-              A TinyMinds ingyenesen letölthető és játszható, az alkalmazás hirdetéseket
-              tartalmaz. Aranyat és segítőket játékkal is gyűjthetsz; aki gyorsabban haladna,
+              A TinyMinds ingyenesen letölthető és játszható; az alkalmazás hirdetéseket
+              tartalmaz. Aranyat és segítőket játékkal is gyűjthetsz. Aki gyorsabban haladna,
               vagy támogatná a fejlesztést, a boltban egyszeri csomagokat és havi Támogatói
               előfizetést talál.
             </p>
@@ -1032,17 +405,22 @@
           <h2 class="heading">Töltsd le, és kezdj játszani!</h2>
           <p>
             Elérhető iPhone-ra, iPadre és Android telefonokra. Nem kell regisztrálni: telepítés
-            után azonnal indul az első kvíz.
+            után azonnal indulhat az első kvíz.
           </p>
           <div class="store-badges">
-            <a href="https://apps.apple.com/hu/app/id6779207580" aria-label="Letöltés az App Store-ból">
-              <img src="/assets/badge-app-store-hu.svg" alt="Letöltés az App Store-ból" height="56" />
+            <a
+              class="store-badge"
+              href="https://apps.apple.com/hu/app/id6779207580"
+              aria-label="Letöltés az App Store-ból"
+            >
+              <img src="/assets/badge-app-store-hu.svg" alt="Letöltés az App Store-ból" />
             </a>
             <a
+              class="store-badge"
               href="https://play.google.com/store/apps/details?id=hu.tinyminds.app"
-              aria-label="Letöltés a Google Play-ről"
+              aria-label="Letöltés a Google Play áruházból"
             >
-              <img src="/assets/badge-google-play-en.png" alt="Get it on Google Play" height="56" />
+              <img src="/assets/badge-google-play-en.png" alt="Letöltés a Google Play áruházból" />
             </a>
           </div>
           <div class="hero-facts">
@@ -1061,9 +439,9 @@
             <details>
               <summary>Tényleg ingyenes a játék?</summary>
               <p>
-                Igen. A TinyMinds ingyenesen letölthető és a teljes játék végigjátszható
-                vásárlás nélkül. Az alkalmazás hirdetéseket tartalmaz, és önként megnézhető
-                jutalmazott videókért extra aranyat, jegyet vagy főnixet kapsz. A támogatói
+                Igen. A TinyMinds ingyenesen letölthető, és a teljes játék végigjátszható
+                vásárlás nélkül. Az alkalmazás hirdetéseket tartalmaz, és ha önként megnézel egy
+                jutalmazott videót, extra aranyat, jegyet vagy főnixet kapsz. A támogatói
                 csomagok és előfizetések választhatók, nem kötelezőek.
               </p>
             </details>
@@ -1071,16 +449,16 @@
               <summary>Milyen korosztálynak való?</summary>
               <p>
                 Mindenkinek. Az áruházi besorolás 4+ (App Store), illetve PEGI 3 (Google Play), a
-                kérdések három nehézségi szinten érkeznek, így a kisiskolástól a nagyszülőig
-                mindenki megtalálja a magának valót.
+                kérdések pedig három nehézségi szinten érkeznek, így a kisiskolástól a
+                nagyszülőig mindenki megtalálja a neki valót.
               </p>
             </details>
             <details>
               <summary>Kell regisztrálni?</summary>
               <p>
-                Nem. Az első indításkor csak egy játékosnevet és opcionálisan egy iskolát adsz
-                meg. A haladásod az eszközödhöz, illetve a Game Center / Google Play Játékok
-                fiókodhoz kötve marad meg, így újratelepítés után is visszatölthető.
+                Nem. Az első indításkor csak egy játékosnevet és – ha szeretnéd – egy iskolát
+                adsz meg. A haladásod az eszközödhöz, illetve a Game Center vagy Google Play
+                Játékok fiókodhoz kötve marad meg, így újratelepítés után is visszatölthető.
               </p>
             </details>
             <details>
@@ -1091,68 +469,22 @@
               </p>
             </details>
             <details>
-              <summary>Hogyan állítom vissza a vásárlásaimat vagy törlöm a fiókomat?</summary>
+              <summary>Hogyan állítom vissza a vásárlásaimat, vagy törlöm a fiókomat?</summary>
               <p>
-                Mindkettő az alkalmazásban, a Beállítások képernyőn érhető el: „Vásárlások
+                Mindkettőt az alkalmazásban, a Beállítások képernyőn találod: „Vásárlások
                 visszaállítása”, illetve „Fiók törlése”. A fiók törlésével minden hozzá tartozó
-                adat végleg törlődik. További segítség a
-                <a href="/support">támogatás oldalon</a>.
+                adat végleg törlődik. További segítséget a
+                <a href="/support">támogatás oldalon</a> találsz.
               </p>
             </details>
             <details>
-              <summary>Hibát találtam vagy kérdésem van. Hova írhatok?</summary>
+              <summary>Hibát találtam, vagy kérdésem van. Hova írhatok?</summary>
               <p>
                 Írj nekünk a
                 <a href="mailto:tinymindsquiz@gmail.com">tinymindsquiz@gmail.com</a> címre, és
                 igyekszünk mielőbb válaszolni.
               </p>
             </details>
-          </div>
-        </div>
-      </section>
-
-      <!-- English summary -->
-      <section class="english" lang="en">
-        <div class="container split">
-          <div>
-            <span class="eyebrow">In English</span>
-            <h2 class="heading">Put your knowledge to the test!</h2>
-            <p class="lead">
-              TinyMinds Quiz is a free trivia game for everyone: eight topics, eight heroes and
-              thousands of questions in Hungarian and English. Answer correctly and watch your
-              heroes grow stronger; take on daily challenges, mini quests and weekly rewards, and
-              climb the player and school leaderboards.
-            </p>
-            <p>
-              Free to download and play, contains ads. Optional monthly Supporter subscriptions
-              (Basic: 50 tickets, 20 phoenixes and 30,000 gold per month; Extra: unlimited
-              tickets plus 40 phoenixes and 60,000 gold per month) renew automatically unless
-              cancelled at least 24 hours before the end of the current period.
-              <a href="/en/terms-and-conditions">Terms of Use</a> ·
-              <a href="/en/privacy-policy">Privacy Policy</a> ·
-              <a href="/support">Support</a>
-            </p>
-            <div class="store-badges">
-              <a href="https://apps.apple.com/app/id6779207580" aria-label="Download on the App Store">
-                <img src="/assets/badge-app-store-en.svg" alt="Download on the App Store" height="48" />
-              </a>
-              <a
-                href="https://play.google.com/store/apps/details?id=hu.tinyminds.app&hl=en"
-                aria-label="Get it on Google Play"
-              >
-                <img src="/assets/badge-google-play-en.png" alt="Get it on Google Play" height="48" />
-              </a>
-            </div>
-          </div>
-          <div class="split-art">
-            <img
-              src="/assets/heroes/lord-hopps-standing.png"
-              alt="Lord Hopps, the history hero"
-              loading="lazy"
-              width="512"
-              height="1026"
-              style="max-width: 300px"
-            />
           </div>
         </div>
       </section>
@@ -1179,7 +511,8 @@
               <li>
                 <a href="https://play.google.com/store/apps/details?id=hu.tinyminds.app">Google Play</a>
               </li>
-              <li><a href="/support">Támogatás / Support</a></li>
+              <li><a href="/support">Támogatás</a></li>
+              <li><a href="/en" lang="en" hreflang="en">This page in English</a></li>
             </ul>
           </div>
           <div>
@@ -1187,35 +520,19 @@
             <ul>
               <li><a href="/hu/aszf">ÁSZF</a></li>
               <li><a href="/hu/adatkezelesi-tajekoztato">Adatkezelési tájékoztató</a></li>
-              <li><a href="/en/terms-and-conditions">Terms and Conditions</a></li>
-              <li><a href="/en/privacy-policy">Privacy Policy</a></li>
-              <li><a href="/legal">Minden dokumentum / All documents</a></li>
+              <li><a href="/en/terms-and-conditions" lang="en">Terms and Conditions</a></li>
+              <li><a href="/en/privacy-policy" lang="en">Privacy Policy</a></li>
+              <li><a href="/legal">Minden dokumentum</a></li>
             </ul>
           </div>
         </div>
         <div class="footer-bottom">
-          © <span id="year">2026</span> TinyMinds · Apple, az App Store és az Apple logó az Apple
-          Inc. védjegyei. A Google Play és a Google Play logó a Google LLC védjegyei.
+          © <span id="year">2026</span> TinyMinds · Az Apple, az App Store és az Apple logó az
+          Apple Inc. védjegyei. A Google Play és a Google Play logó a Google LLC védjegyei.
         </div>
       </div>
     </footer>
 
-    <script>
-      (function () {
-        var toggle = document.querySelector('.nav-toggle');
-        var nav = document.getElementById('site-nav');
-        toggle.addEventListener('click', function () {
-          var open = nav.classList.toggle('open');
-          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-        });
-        nav.addEventListener('click', function (event) {
-          if (event.target.tagName === 'A') {
-            nav.classList.remove('open');
-            toggle.setAttribute('aria-expanded', 'false');
-          }
-        });
-        document.getElementById('year').textContent = String(new Date().getFullYear());
-      })();
-    </script>
+    <script src="/assets/site.js"></script>
   </body>
 </html>
