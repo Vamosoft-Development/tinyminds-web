@@ -13,7 +13,7 @@ automatically**. No build step; `vercel.json` enables `cleanUrls`, so
 
 | Path | Page |
 | --- | --- |
-| `/` | Landing page (`index.html`, hand-written) |
+| `/` | Landing page (`index.html`, hand-written, HU with an EN summary) |
 | `/support` | Support / contact (`support.html`, hand-written, bilingual) |
 | `/legal` | Document index (`legal.html`, hand-written) |
 | `/hu/aszf` · `/hu/adatkezelesi-tajekoztato` | Hungarian legal documents (generated) |
@@ -39,3 +39,15 @@ When a new document version arrives:
 2. Copy the changed `.pdf` + regenerated `.html` here (paths are identical),
    or drop the PDF in place and run `node scripts/build.mjs`.
 3. Commit and push — CI proves fidelity, Vercel deploys.
+
+## Landing page assets
+
+`assets/heroes/` (hero portraits + standing art) and `assets/icons/` are copies of
+the mobile app's bundled assets — re-copy from the monorepo when the art changes.
+`assets/illustrations/*.webp` are flat storybook-style scene illustrations
+generated with Higgsfield (GPT Image) from the hero art as references; regenerate
+in the same style if a new section needs one. `assets/og.png` is the social
+preview card. Store badges come from Apple's and Google's official badge
+services; the copy on the landing page mirrors the live App Store / Google Play
+listings (name, subtitle, description, subscription terms, age rating) — update
+both when the listing changes.
