@@ -1,0 +1,65 @@
+{
+  "alwaysThinkingEnabled": true,
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[Vamosoft] Linear first: run /task-start <KEY> before coding. Finish with /task-finish.'"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[Reminder] File modified. Consider committing when this logical unit is complete.'"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Claude Code needs attention\" with title \"Claude Code\"' 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [],
+    "ask": [],
+    "deny": [
+      "Bash(git push --force *)",
+      "Bash(git reset --hard *)",
+      "Bash(rm -rf /)",
+      "Bash(git push origin main)",
+      "Bash(git push origin main *)",
+      "Bash(git push -u origin main)",
+      "Bash(git push -u origin main *)",
+      "Bash(git push origin HEAD:main)",
+      "Bash(git push origin HEAD:main *)"
+    ],
+    "_comment": "Project-specific rules only. The shared baseline lives in ~/.claude/settings.json (ai-standards templates/claude/global-permissions.json, installed by scripts/install.sh). Keep deny rules narrow: a broad deny cannot carry allow-list exceptions."
+  },
+  "extraKnownMarketplaces": {
+    "vamosoft": {
+      "source": {
+        "source": "github",
+        "repo": "Vamosoft-Development/ai-standards"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "vamosoft@vamosoft": true
+  }
+}

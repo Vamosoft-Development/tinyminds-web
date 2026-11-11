@@ -1,0 +1,53 @@
+# AI security review on every PR — runs on the Claude Max subscription via
+# claude-code-action + OAuth token (the dedicated
+# anthropics/claude-code-security-review action only accepts API keys, so we
+# drive the same review through the standard action instead).
+#
+# Semantic analysis of the diff: auth/logic/injection issues that rule-based
+# SAST misses. Posts a review comment on the PR.
+#
+# Setup: org secret CLAUDE_CODE_OAUTH_TOKEN (from `claude setup-token`).
+#
+# SECURITY NOTE: prompt-injection via PR content is possible in principle —
+# the job is restricted to same-repo branches; PRs from forks are skipped.
+
+name: Claude Security Review
+
+on:
+  # Every PR, whatever its base: a PR stacked on another feature branch got no checks at all (SBH #98, #101 on feature/dev-1233).
+  pull_request:
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+  id-token: write
+
+jobs:
+  security-review:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 0
+      - uses: anthropics/claude-code-action@a4f54ef2c58884867281bd8e2f8d63352ad019a9 # v1 (Claude Code 2.1.276)
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: "--max-turns 30"
+          prompt: |
+            Perform a security review of this pull request
+            (PR #${{ github.event.pull_request.number }}).
+            Diff the PR branch against the base branch, then analyze ONLY the
+            changed code for: injection (SQL/NoSQL/command/XSS), broken
+            authentication or authorization, insecure direct object references,
+            secrets or credentials in code, SSRF, unsafe deserialization,
+            missing input validation on API boundaries, and insecure Firebase
+            security rules or Supabase RLS changes.
+            Ignore: denial-of-service concerns, rate limiting, and purely
+            theoretical issues without a concrete exploit path.
+            If you find real issues, post ONE review comment on the PR via
+            `gh pr comment` summarizing each finding with file:line, severity
+            (HIGH/MEDIUM/LOW), and a concrete fix. If the changes look safe,
+            post a single short comment saying the security review passed.

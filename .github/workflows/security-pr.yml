@@ -1,0 +1,195 @@
+# PR security gate: SAST (Semgrep CE) + secrets (Gitleaks) + dependencies (OSV-Scanner).
+# Copy to .github/workflows/ in every repo. No secrets required.
+#
+# Notes:
+# - Semgrep CE rules are free for internal use (Semgrep Rules License v1.0).
+#   Drop-in alternative with no license strings attached: Opengrep
+#   (github.com/opengrep/opengrep) — same rule format.
+# - Gitleaks runs as the MIT-licensed binary via Docker on purpose: the
+#   official gitleaks-action requires a paid license key for org-owned repos.
+# - Findings are NOT uploaded to the GitHub Security tab: SARIF upload on
+#   private repos requires a paid GitHub Code Security license. The gate here
+#   is "fail the check"; there is no dashboard (DefectDojo on the Mac Mini was
+#   retired, MANAGE-322). Live credentials in any org repo are caught nightly by
+#   machines/mac-mini/scripts/secret-scan.sh in ai-standards.
+# - Actions are pinned to commit SHAs (version in the trailing comment): the
+#   Semgrep gate below rejects mutable tags (DEV-808). Bump the SHA and the
+#   comment together.
+
+name: Security (PR)
+
+on:
+  # Every PR, whatever its base: a PR stacked on another feature branch got no checks at all (SBH #98, #101 on feature/dev-1233).
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  sast:
+    name: Semgrep SAST
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+      - name: Install Semgrep CE
+        run: pip install semgrep
+      - name: Scan
+        run: |
+          semgrep scan \
+            --config p/typescript \
+            --config p/react \
+            --config p/nextjs \
+            --config p/owasp-top-ten \
+            --config p/secrets \
+            --error \
+            --json --output semgrep-results.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: always()
+        with:
+          name: semgrep-results
+          path: semgrep-results.json
+
+  secrets:
+    name: Gitleaks secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 0
+      - name: Scan full history
+        run: |
+          docker run --rm -v "$PWD:/repo" zricethezav/gitleaks:latest \
+            detect --source /repo --no-banner --redact \
+            --report-format json --report-path /repo/gitleaks-results.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: always()
+        with:
+          name: gitleaks-results
+          path: gitleaks-results.json
+
+  # Fails only on vulnerabilities this PR introduces (MANAGE-505). The whole lockfile used to be
+  # scanned, so every advisory published anywhere turned every unrelated PR red (50+ tickets in 45
+  # days). Known vulnerabilities on the base branch are the Mac Mini's job: osv-watch.sh scans the
+  # base branch of every active Cyrus repository nightly and hands the fix to Cyrus. The scanner is
+  # pinned (rules/security.md).
+  dependencies:
+    name: OSV dependency scan (new vulnerabilities only)
+    # PR-only: a push or scheduled run has no base, and the full scan is osv-watch.sh's job.
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    env:
+      OSV_SCANNER_VERSION: v2.7.0
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 0
+      - name: Install OSV-Scanner
+        run: |
+          curl -fsSL -o /usr/local/bin/osv-scanner \
+            "https://github.com/google/osv-scanner/releases/download/${OSV_SCANNER_VERSION}/osv-scanner_linux_amd64"
+          chmod +x /usr/local/bin/osv-scanner
+      - name: Check out the PR base
+        # Only a pull_request has a base; on any other event the gate scans the head alone and
+        # every finding counts as new (a full scan).
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: git worktree add --detach "$RUNNER_TEMP/osv-base" "$BASE_SHA"
+      - name: Fail only on vulnerabilities this PR introduces
+        env:
+          BASE_DIR: ${{ runner.temp }}/osv-base
+        run: |
+          # >>> osv-pr-gate (tested by ai-standards scripts/test-osv-pr-gate.sh)
+          set -uo pipefail
+          OUT="${RUNNER_TEMP:-/tmp}/osv-gate"; mkdir -p "$OUT"
+          # A root osv-scanner.toml is passed explicitly so it also covers nested lockfiles
+          # (functions/, packages/*); --no-ignore so a .gitignore entry cannot hide a lockfile.
+          # Exit 0 = clean, 1 = findings, 128 = no lockfile; anything else is an error.
+          scan() { # $1=dir $2=out; prints "findings" when the scanner reported any
+            local config=()
+            [ -f "$1/osv-scanner.toml" ] && config=(--config "$1/osv-scanner.toml")
+            osv-scanner scan source -r "$1" --no-ignore "${config[@]}" --format json > "$2" 2> "$2.log"
+            case $? in
+              0) return 0 ;;
+              1) echo findings; return 0 ;;
+              128) echo '{"results":[]}' > "$2"; return 0 ;;
+              *) cat "$2.log" >&2; return 1 ;;
+            esac
+          }
+          # One line per (ecosystem, package, advisory group): eco|name|ids|version|cvss, where ids
+          # is the group's comma-separated alias list. Same field order as osv-watch.sh.
+          findings() {
+            jq -r '[.results[]?.packages[]? | .package as $p | .groups[]
+              | "\($p.ecosystem)|\($p.name)|\(.ids | sort | join(","))|\($p.version)|\(.max_severity // "")"]
+              | unique | .[]' "$1"
+          }
+          if ! head_state=$(scan . "$OUT/head.json"); then
+            echo "::error::osv-scanner failed on the PR head"; exit 1
+          fi
+          if ! findings "$OUT/head.json" > "$OUT/head.txt"; then
+            echo "::error::cannot read the osv-scanner output for the PR head"; exit 1
+          fi
+          if [ "$head_state" = findings ] && [ ! -s "$OUT/head.txt" ]; then
+            echo "::error::osv-scanner reported findings but none could be read"; exit 1
+          fi
+          if ! scan "$BASE_DIR" "$OUT/base.json" > /dev/null || ! findings "$OUT/base.json" > "$OUT/base.txt"; then
+            echo "::warning::no readable base scan; every finding counts as new"
+            : > "$OUT/base.txt"
+          fi
+          # Known = any alias of a head group already reported for the same package on the base, so a
+          # group whose alias set changed between versions is not counted twice.
+          awk -F'|' '{ n = split($3, ids, ","); for (i = 1; i <= n; i++) print $1 "|" $2 "|" ids[i] }' \
+            "$OUT/base.txt" | sort -u > "$OUT/base.keys"
+          # FILENAME, not NR == FNR: with no known findings the base file is empty and NR == FNR would
+          # hold for every head line, so a clean repository would never fail (MANAGE-505).
+          awk -F'|' 'FILENAME == ARGV[1] { known[$0] = 1; next }
+            { n = split($3, ids, ","); for (i = 1; i <= n; i++) if (($1 "|" $2 "|" ids[i]) in known) next; print }' \
+            "$OUT/base.keys" "$OUT/head.txt" > "$OUT/new.txt"
+          echo "Known on the base branch (handled by the Mac Mini osv-watch job): $(wc -l < "$OUT/base.txt" | tr -d ' ')"
+          # An ignore this PR adds or changes, in any osv-scanner.toml, is allowed only with a reason and
+          # an expiry, and is always listed so the reviewer sees it.
+          if ! python3 - "$BASE_DIR" . > "$OUT/ignores.txt" <<'PY'
+          import os, sys, tomllib
+          def entries(root):
+              found = {}
+              for directory, subdirs, files in os.walk(root):
+                  subdirs[:] = [d for d in subdirs if d not in (".git", "node_modules")]
+                  if "osv-scanner.toml" not in files: continue
+                  path = os.path.join(directory, "osv-scanner.toml")
+                  rel = os.path.relpath(path, root)
+                  with open(path, "rb") as f: data = tomllib.load(f)
+                  for e in data.get("IgnoredVulns", []):
+                      found[f"{rel}: IgnoredVulns {e.get('id')}"] = e
+                  for e in data.get("PackageOverrides", []):
+                      if e.get("ignore") or e.get("vulnerability", {}).get("ignore"):
+                          found[f"{rel}: PackageOverrides {e.get('name')}@{e.get('version', '*')}"] = e
+              return found
+          base = entries(sys.argv[1]) if os.path.isdir(sys.argv[1]) else {}
+          for key, entry in entries(sys.argv[2]).items():
+              if base.get(key) == entry: continue
+              ok = entry.get("reason") and entry.get("ignoreUntil")
+              change = "changed" if key in base else "added"
+              print(("OK" if ok else "BAD") + f" {change} {key} until={entry.get('ignoreUntil')} reason={entry.get('reason')}")
+          PY
+          then
+            echo "::error::cannot read the osv-scanner.toml files"; exit 1
+          fi
+          status=0
+          if [ -s "$OUT/ignores.txt" ]; then
+            echo "::warning::This PR adds or changes OSV ignores:"; sed 's/^/  /' "$OUT/ignores.txt"
+            if grep -q '^BAD ' "$OUT/ignores.txt"; then
+              echo "::error::every added or changed ignore needs a reason and an ignoreUntil date"; status=1
+            fi
+          fi
+          if [ -s "$OUT/new.txt" ]; then
+            echo "::error::This PR introduces $(wc -l < "$OUT/new.txt" | tr -d ' ') new vulnerable dependency finding(s):"
+            awk -F'|' '{ printf "  %s %s@%s  %s (CVSS %s)\n", $1, $2, $4, $3, ($5 == "" ? "?" : $5) }' "$OUT/new.txt"
+            echo "Bump the package to a fixed version; an ignore in osv-scanner.toml needs a reason and an ignoreUntil date."
+            status=1
+          fi
+          [ "$status" -eq 0 ] && echo "No new vulnerabilities introduced by this PR."
+          exit "$status"
+          # <<< osv-pr-gate
